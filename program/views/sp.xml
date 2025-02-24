@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Strategic Plan Goal Starts -->
+    <!-- Tree strategic plan view -->
+    <record id="strategic_plan_tree_view" model="ir.ui.view">
+        <field name="name">strategic.plan.tree.view</field>
+        <field name="model">strategic.plan.goal</field>
+        <field name="arch" type="xml">
+            <tree string="Strategy plan">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form view strategic plan-->
+    <record id="strategic_plan_form_view_id" model="ir.ui.view">
+        <field name="name">strategic.plan.form.view</field>
+        <field name="model">strategic.plan.goal</field>
+        <field name="arch" type="xml">
+            <form string="Strategy Plan">
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <page string="Indicators" name="indicators">
+                            <field name="strategic_plan_indicators_line_ids">
+                                <kanban>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="indicator"/>
+                                            </group>
+                                            <group>
+                                                <field name="actual_value"/>
+                                            </group>
+                                        </group>
+                                    </form>
+
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <div class="oe_kanban_details d-flex flex-column">
+                                                    <strong>
+                                                        <field name="indicator"/>
+                                                    </strong>
+                                                    <div name="tags"/>
+                                                    <ul>
+                                                        <li>Who is collecting:
+                                                            <field name="collector"/>
+                                                        </li>
+                                                        <!--                                                        <li>What to measure:-->
+                                                        <!--                                                            <field name="name"/>-->
+                                                        <!--                                                        </li>-->
+                                                        <!--                                                        <li>Baseline Value:-->
+                                                        <!--                                                            <field name="name"/>-->
+                                                        <!--                                                        </li>-->
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- output action part -->
+    <record id="strategic_plan_goal_action_view" model="ir.actions.act_window">
+        <field name="name">Strategic Plan Goal</field>
+        <field name="res_model">strategic.plan.goal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Strategic Plan Goal added yet !!
+            </p>
+        </field>
+    </record>
+
+    <!--    Strategic plan goal end-->
+
+
+    <!--    strategic plan outcomes starts -->
+
+    <!--     Tree outcomes goals view     -->
+    <record id="sp_outcomes_tree_view" model="ir.ui.view">
+        <field name="name">outcomes.tree.view</field>
+        <field name="model">sp.outcomes</field>
+        <field name="arch" type="xml">
+            <tree string="SP Outcome">
+                <field name="outcome_level"/>
+                <field name="outcome_goal"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form view outcomes-->
+    <record id="sp_outcomes_form_view_id" model="ir.ui.view">
+        <field name="name">outcomes.form.view</field>
+        <field name="model">sp.outcomes</field>
+        <field name="arch" type="xml">
+            <form string="SP Outcome">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="outcome_level"/>
+                            <field name="outcome_goal"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Indicators" name="indicators">
+                            <field name="sp_outcome_indicators_line_ids">
+                                <kanban>
+                                    <group>
+                                        <group>
+                                            <field name="outcome_indicator"/>
+                                        </group>
+                                        <group>
+                                            <field name="what_to_measure"/>
+                                            <field name="baseline_value"/>
+                                        </group>
+                                    </group>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <div class="oe_kanban_details d-flex flex-column">
+                                                    <strong>
+                                                        <field name="outcome_indicator"/>
+                                                    </strong>
+                                                    <div name="tags"/>
+                                                    <ul>
+                                                        <li>What to measure:
+                                                            <field name="what_to_measure"/>
+                                                        </li>
+                                                        <li>Baseline Value:
+                                                            <field name="baseline_value"/>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+
+                                </kanban>
+
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- SP outcomes action part -->
+    <record id="sp_outcomes_action_view" model="ir.actions.act_window">
+        <field name="name">SP Outcome</field>
+        <field name="res_model">sp.outcomes</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No SP Outcome add yet !!
+            </p>
+        </field>
+    </record>
+
+    <!--  strategic plan outcome plan end-->
+
+
+    <!--    Strategic plan Output starts -->
+    <!-- Tree  Strategic plan output goals view -->
+    <record id="sp_output_indicators_tree_view" model="ir.ui.view">
+        <field name="name">sp.output.indicators.tree.view</field>
+        <field name="model">sp.output</field>
+        <field name="arch" type="xml">
+            <tree string="Output">
+                <field name="outcome_level"/>
+                <field name="output_level"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form view outcomes-->
+    <record id="sp_output_indicators_form_view_id" model="ir.ui.view">
+        <field name="name">sp.output.indicators.form.view</field>
+        <field name="model">sp.output</field>
+        <field name="arch" type="xml">
+            <form string="SP Output">
+<!--                <header>-->
+<!--                    <button name="print_logical_framework" string="LOGICAL FRAMEWORK" class="oe_highlight" states=""-->
+<!--                            type="object"/>-->
+<!--                </header>-->
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="outcome_level"/>
+                            <field name="output_level"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Indicators">
+                            <field name="output_indicators_line_ids">
+                                <kanban>
+                                    <group>
+                                        <field name="outcome_indicator"/>
+                                        <field name="what_to_measure"/>
+                                        <field name="baseline_value"/>
+                                    </group>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <!--                                                <div class="o_kanban_image">-->
+                                                <!--                                                </div>-->
+                                                <div class="oe_kanban_details d-flex flex-column">
+                                                    <strong>
+                                                        <field name="outcome_indicator"/>
+                                                    </strong>
+                                                    <div name="tags"/>
+                                                    <ul>
+                                                        <li>What to measure:
+                                                            <field name="what_to_measure"/>
+                                                        </li>
+                                                        <li>Baseline Value:
+                                                            <field name="baseline_value"/>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+
+                                </kanban>
+                                <notebook>
+                                    <page string="Unit/Definition">
+                                        <field name="unit_definition_ids">
+                                            <tree>
+                                                <field name="unit"/>
+                                                <field name="actual_period"/>
+                                                <field name="actual_value"/>
+                                                <field name="unit_definition_id" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- output action part -->
+    <record id="sp_output_indicators_action_view" model="ir.actions.act_window">
+        <field name="name">SP Output</field>
+        <field name="res_model">sp.output</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Output add yet !!
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
