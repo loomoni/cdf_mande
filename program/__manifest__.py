@@ -20,7 +20,7 @@
     'data': [
         # 'security/security.xml',
         # 'security/ir.model.access.csv',
-        # 'views/views.xml',
+        'views/views.xml',
         # 'views/configurations.xml',
         # 'views/outcomes.xml',
         # 'views/output.xml',
