@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_key_result_area,key result area access,model_key_result_area,,1,1,1,1
+access_key_result_area_lines,key result area lines access,model_key_result_area_outcomes_lines,,1,1,1,1
+access_key_result_area_outcomes_lines,key result area outcomes lines access,model_key_result_area_outcomes_lines,,1,1,1,1
+access_kra_outcome_indicators,kra outcome indicators access,model_kra_outcome_indicators,,1,1,1,1

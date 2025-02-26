@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Programs",
+    'name': "Program",
 
     'description': """
         Program solution to monitor site project
@@ -14,13 +14,13 @@
     'version': '12.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
 
     # always loaded
     'data': [
-        # 'security/security.xml',
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        # 'views/views.xml',
         # 'views/configurations.xml',
         # 'views/outcomes.xml',
         # 'views/output.xml',
@@ -31,7 +31,7 @@
         # 'views/success_story.xml',
         # 'reports/report.xml',
         # 'views/brand_remove.xml',
-        # 'views/sp.xml',
+        'views/sp.xml',
         # 'views/national_strategy.xml',
         # 'reports/report_template.xml',
         # 'views/menu.xml',
@@ -43,10 +43,11 @@
     #     'demo/demo.xml',
     # ],
 
-    'qweb': ['static/src/xml/dashboard.xml'],
+    # 'qweb': ['static/src/xml/dashboard.xml'],
 
     'license': 'AGPL-3',
     'installable': True,
     'auto_install': False,
     'application': True,
 }
+

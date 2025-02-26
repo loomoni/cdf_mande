@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+<!--        <record id="module_event_reporting_id" model="ir.module.category">-->
+<!--            <field name="name">M &amp; E</field>-->
+<!--            <field name="sequence">10</field>-->
+<!--        </record>-->
+
+<!--        <record id="administrator_access_group_id" model="res.groups">-->
+<!--            <field name="name">Administrator</field>-->
+<!--            <field name="category_id" ref="module_event_reporting_id"/>-->
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+<!--        </record>-->
+
+<!--        <record id="program_officers_access_group_id" model="res.groups">-->
+<!--            <field name="name">Program Officers</field>-->
+<!--            <field name="category_id" ref="module_event_reporting_id"/>-->
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+<!--        </record>-->
+
+<!--        <record id="program_manager_access_group_id" model="res.groups">-->
+<!--            <field name="name">Program Manager</field>-->
+<!--            <field name="category_id" ref="module_event_reporting_id"/>-->
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+<!--        </record>-->
+
+<!--        <record id="head_of_operations_manager_access_group_id" model="res.groups">-->
+<!--            <field name="name">Head of Operations/Quality Assurance</field>-->
+<!--            <field name="category_id" ref="module_event_reporting_id"/>-->
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+<!--        </record>-->
+
+<!--         <record id="executive_director_access_group_id" model="res.groups">-->
+<!--            <field name="name">Executive Director</field>-->
+<!--            <field name="category_id" ref="module_event_reporting_id"/>-->
+<!--&lt;!&ndash;            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>&ndash;&gt;-->
+<!--        </record>-->
+
+    </data>
+</odoo>
