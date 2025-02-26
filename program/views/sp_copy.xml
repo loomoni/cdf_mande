@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-    <!-- Tree Key Result Area view -->
+    <!-- Tree View for Key Result Area -->
     <record id="key_result_area_tree_view" model="ir.ui.view">
         <field name="name">key.result.area.tree.view</field>
         <field name="model">key.result.area</field>
@@ -12,7 +12,7 @@
         </field>
     </record>
 
-    <!--  Form view Key Result Area-->
+    <!-- Form View for Key Result Area -->
     <record id="strategic_plan_form_view_id" model="ir.ui.view">
         <field name="name">key.result.area.form.view</field>
         <field name="model">key.result.area</field>
@@ -25,26 +25,13 @@
                     <notebook>
                         <page string="Outcome" name="Outcome">
                             <field name="outcome_line_ids">
-                                <kanban>
-                                    <templates>
-                                        <t t-name="kanban-box">
-                                            <div class="oe_kanban_global_click">
-                                                <div class="oe_kanban_details d-flex flex-column">
-                                                    <strong>
-                                                        <field name="outcome_level"/>
-                                                    </strong>
-                                                    <div name="tags"/>
-                                                    <ul>
-                                                        <li>Description:
-                                                            <field name="description"/>
-                                                        </li>
-                                                    </ul>
+                                <tree editable="bottom">
+                                    <field name="outcome_level"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
 
-                                                </div>
-                                            </div>
-                                        </t>
-                                    </templates>
-                                </kanban>
+                            <field name="outcome_line_ids">
                                 <form>
                                     <sheet>
                                         <group>
@@ -54,25 +41,19 @@
                                         <notebook>
                                             <page string="Indicators" name="Indicators">
                                                 <field name="kra_outcome_indicator_line_ids">
-                                                    <tree>
+                                                    <tree editable="bottom">
                                                         <field name="outcome_indicator"/>
                                                         <field name="what_to_measure"/>
                                                         <field name="baseline_value"/>
                                                     </tree>
-
+                                                </field>
+                                                <field name="kra_outcome_indicator_line_ids">
                                                     <form>
                                                         <sheet>
                                                             <group>
                                                                 <field name="outcome_indicator"/>
-
-                                                            </group>
-                                                            <group>
-                                                                <group>
-                                                                    <field name="what_to_measure"/>
-                                                                </group>
-                                                                <group>
-                                                                    <field name="baseline_value"/>
-                                                                </group>
+                                                                <field name="what_to_measure"/>
+                                                                <field name="baseline_value"/>
                                                             </group>
                                                         </sheet>
                                                     </form>
@@ -94,36 +75,19 @@
         </field>
     </record>
 
-    <!-- output action part -->
+    <!-- Action for Key Result Area -->
     <record id="key_result_area_action_view" model="ir.actions.act_window">
         <field name="name">Key Result Area</field>
         <field name="res_model">key.result.area</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No Strategic Plan Goal added yet !!
-            </p>
-        </field>
+        <field name="view_id" ref="key_result_area_tree_view"/>
     </record>
 
+    <menuitem id="program_main_menu" name="Program" web_icon="program,static/description/icon.png"/>
 
-    <menuitem id="program_main_menu"
-              name="Program"
-              web_icon="program,static/description/icon.png"
-    />
+    <menuitem id="strategic_plan_id" name="SP" parent="program_main_menu" sequence="1"/>
 
-    <menuitem
-            id="strategic_plan_id"
-            name="SP"
-            parent="program_main_menu"
-            sequence="1"/>
-
-    <menuitem
-            id="strategic_plan_outcome_id"
-            parent="strategic_plan_id"
-            name="Key Result Area (KRA)"
-            action="key_result_area_action_view"
-            sequence="2"/>
+    <menuitem id="strategic_plan_outcome_id" parent="strategic_plan_id" name="Key Result Area (KRA)"
+              action="key_result_area_action_view" sequence="2"/>
 
 </odoo>
