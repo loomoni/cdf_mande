@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Region section start-->
+
+        <!--    region tree view -->
+        <record id="region_tree_view" model="ir.ui.view">
+            <field name="name">region.tree.view</field>
+            <field name="model">region</field>
+            <field name="arch" type="xml">
+                <tree string="Region">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    region form view -->
+        <record id="region_form_view" model="ir.ui.view">
+            <field name="name">region.form.view</field>
+            <field name="model">region</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="District">
+                                <field name="district_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    region action view -->
+        <record id="region_action_view" model="ir.actions.act_window">
+            <field name="name">Regions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">region</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                    No region created, Start create
+                </p>
+            </field>
+        </record>
+
+        <!--        End region section -->
+
+          <!-- Period section start-->
+
+        <!--    region tree view -->
+        <record id="target_period_tree_view" model="ir.ui.view">
+            <field name="name">target.period.tree.view</field>
+            <field name="model">target.period</field>
+            <field name="arch" type="xml">
+                <tree string="Target Period">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    target period form view -->
+        <record id="target_period_form_view" model="ir.ui.view">
+            <field name="name">target.period.form.view</field>
+            <field name="model">target.period</field>
+            <field name="arch" type="xml">
+                <form string="Target Period">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Time Section">
+                                <field name="period_section_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    target period action view -->
+        <record id="target_period_action_view" model="ir.actions.act_window">
+            <field name="name">Target Period</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">target.period</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                    No time period create.
+                </p>
+            </field>
+        </record>
+
+        <!--        End target period section -->
+
+        <!--   sdg.configuration Configuration section starts -->
+
+        <!--    events.configuration tree view -->
+        <record id="sdg_configuration_configuration_tree_view" model="ir.ui.view">
+            <field name="name">sdg.configuration.tree.view</field>
+            <field name="model">sdg.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="SDG">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    sdg.configuration form view -->
+        <record id="sdg_configuration_form_view" model="ir.ui.view">
+            <field name="name">sdg.configuration.form.view</field>
+            <field name="model">sdg.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Events">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    sdg.configuration action view -->
+        <record id="sdg_configuration_action_view" model="ir.actions.act_window">
+            <field name="name">SDG</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sdg.configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                    No SDG, Start create
+                </p>
+            </field>
+        </record>
+        <!--  sdg.configuration section end -->
+
+
+
+        <!--    events.configuration tree view -->
+        <record id="events_configuration_tree_view" model="ir.ui.view">
+            <field name="name">events.configuration.tree.view</field>
+            <field name="model">events.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Events">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    events.configuration form view -->
+        <record id="events_form_view" model="ir.ui.view">
+            <field name="name">events.form.view</field>
+            <field name="model">events.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Events">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    Unit action view -->
+        <record id="events_action_view" model="ir.actions.act_window">
+            <field name="name">Events</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">events.configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                    No events created, Start create
+                </p>
+            </field>
+        </record>
+        <!--  events section end -->
+
+
+
+
+
+         <!--        Unit Configuration section starts -->
+
+        <!--    Unit tree view -->
+        <record id="unit_tree_view" model="ir.ui.view">
+            <field name="name">unit.tree.view</field>
+            <field name="model">unit.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Unit">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    unit form view -->
+        <record id="unit_form_view" model="ir.ui.view">
+            <field name="name">unit.form.view</field>
+            <field name="model">unit.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Unit">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    Unit action view -->
+        <record id="unit_action_view" model="ir.actions.act_window">
+            <field name="name">Units</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">unit.configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                    No Unit created, Start create
+                </p>
+            </field>
+        </record>
+        <!--  unit section end -->
+
+
+
+        <!--  Indicators section starts -->
+        <!--    Indicators tree view -->
+        <record id="indicators_tree_view" model="ir.ui.view">
+            <field name="name">indicators.tree.view</field>
+            <field name="model">me.indicators</field>
+            <field name="arch" type="xml">
+                <tree string="Indicators">
+                    <field name="indicators"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--    indicators form view -->
+        <record id="indicators_form_view" model="ir.ui.view">
+            <field name="name">indicators.form.view</field>
+            <field name="model">me.indicators</field>
+            <field name="arch" type="xml">
+                <form string="Indicators">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="indicators"/>
+                            </group>
+                            <group>
+                                <field name="indicator_area" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--    Indicator action view -->
+        <record id="indicators_action_view" model="ir.actions.act_window">
+            <field name="name">Indicators</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">me.indicators</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                    No Indicators created, Start create
+                </p>
+            </field>
+        </record>
+        <!--  Indicators section end -->
+
+    </data>
+</odoo>

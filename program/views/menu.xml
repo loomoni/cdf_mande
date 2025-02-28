@@ -1,7 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Top menu item -->
+    <menuitem id="program_main_menu"
+              name="Program"
+              web_icon="program,static/description/icon.png"
+    />
 
+    <!--    SP Menus -->
+
+    <menuitem
+            id="strategic_plan_id"
+            name="SP"
+            parent="program_main_menu"
+            sequence="1"/>
+
+    <menuitem id="menu_program_project"
+              name="Projects"
+              parent="program_main_menu"
+              sequence="2"
+              action="action_program_project"/>
+
+    <menuitem
+            id="strategic_plan_outcome_id"
+            parent="strategic_plan_id"
+            name="Key Result Area (KRA)"
+            action="key_result_area_action_view"
+            sequence="2"/>
+
+    <!--         Configuration menu-->
+    <menuitem id="configuration_root_menu"
+              name="Configurations"
+              parent="program_main_menu"
+              sequence="11"/>
+
+    <menuitem id="region_configuration_menu"
+              name="Region &amp; District"
+              parent="configuration_root_menu"
+              action="region_action_view"
+              sequence="1"/>
+
+    <menuitem id="unit_menu_id"
+              name="Unit"
+              parent="configuration_root_menu"
+              action="unit_action_view"
+              sequence="2"/>
+
+    <menuitem id="target_period_id"
+              name="Target Period"
+              parent="configuration_root_menu"
+              action="target_period_action_view"
+              sequence="3"/>
+
+    <menuitem id="indicators_menu_id"
+              name="Indicators"
+              parent="configuration_root_menu"
+              action="indicators_action_view"
+              sequence="4"/>
+
+
+    <!--    <menuitem id="event_configuration_menu"-->
+    <!--              name="Events"-->
+    <!--              parent="configuration_root_menu"-->
+    <!--              action="events_action_view"-->
+    <!--              sequence="4"/>-->
+
+    <!--    <menuitem id="sdg_configuration_menu"-->
+    <!--              name="SDG"-->
+    <!--              parent="configuration_root_menu"-->
+    <!--              action="sdg_configuration_action_view"-->
+    <!--              sequence="5"/>-->
+
+    <!--    <menuitem id="national_strategy_configuration_menu"-->
+    <!--              name="National Strategy Plan"-->
+    <!--              parent="configuration_root_menu"-->
+    <!--              action="national_strategy_plan_action_view"-->
+    <!--              sequence="6"/>-->
+
+    <!--    <menuitem action="project.open_view_project_all_config"-->
+    <!--              id="project.menu_projects_config"-->
+    <!--              name="Projects"-->
+    <!--              parent="configuration_root_menu"-->
+    <!--              groups="project.group_project_manager,project.group_project_user"-->
+    <!--              sequence="7"/>-->
+
+    <!--    <menuitem action="project.open_task_type_form"-->
+    <!--              id="project.menu_project_config_project"-->
+    <!--              name="Stages"-->
+    <!--              parent="configuration_root_menu"-->
+    <!--              sequence="7"/>-->
 
 </odoo>
 

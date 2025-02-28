@@ -20,8 +20,8 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        # 'views/views.xml',
-        # 'views/configurations.xml',
+        'views/project.xml',
+        'views/configurations.xml',
         # 'views/outcomes.xml',
         # 'views/output.xml',
         # 'views/event_reporting.xml',
@@ -34,7 +34,7 @@
         'views/sp.xml',
         # 'views/national_strategy.xml',
         # 'reports/report_template.xml',
-        # 'views/menu.xml',
+        'views/menu.xml',
 
     ],
     # only loaded in demonstration mode
@@ -45,9 +45,14 @@
 
     # 'qweb': ['static/src/xml/dashboard.xml'],
 
+    # 'assets': {
+    #     'web.assets_backend': [
+    #         'program/static/src/js/date_picker.js',
+    #     ],
+    # },
+
     'license': 'AGPL-3',
     'installable': True,
     'auto_install': False,
     'application': True,
 }
-

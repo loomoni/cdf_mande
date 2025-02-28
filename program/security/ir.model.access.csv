@@ -1,6 +1,46 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_key_result_area,key result area access,model_key_result_area,,1,1,1,1
+
 access_key_result_area_lines,key result area lines access,model_key_result_area_outcomes_lines,,1,1,1,1
+
 access_key_result_area_outcomes_lines,key result area outcomes lines access,model_key_result_area_outcomes_lines,,1,1,1,1
+
 access_kra_outcome_indicators,kra outcome indicators access,model_kra_outcome_indicators,,1,1,1,1
+
+access_organization_goal,organization goal,model_organization_goal,,1,1,1,1
+
+access_program_project,program project goal,model_program_project,,1,1,1,1
+
+access_region_access,region access,model_region,,1,1,1,1
+
+access_district_lines,district lines,model_district_lines,,1,1,1,1
+
+access_me_indicators,me indicators,model_me_indicators,,1,1,1,1
+
+access_organization_goal_indicators_line,organization goal indicators line,model_organization_goal_indicators_line,,1,1,1,1
+
+access_outcomes,outcomes level,model_outcomes,,1,1,1,1
+
+access_outcomes_lines,outcomes lines,model_outcomes_lines,,1,1,1,1
+
+access_outcome_indicators,outcome indicators,model_outcome_indicators,,1,1,1,1
+
+access_unit_definition,unit definition,model_unit_definition,,1,1,1,1
+
+access_actual_period_lines,actual period lines,model_actual_period_lines,,1,1,1,1
+
+access_actual_period_section,actual period section lines,model_actual_period_section_lines,,1,1,1,1
+
+access_target_period,target period,model_target_period,,1,1,1,1
+
+access_target_period_lines,target period lines,model_target_period_lines,,1,1,1,1
+
+access_unit_configuration,unit configuration,model_unit_configuration,,1,1,1,1
+
+access_sp_unit_definition,sp unit definition,model_sp_unit_definition,,1,1,1,1
+
+access_sp_actual_period_lines,sp actual period lines,model_sp_actual_period_lines,,1,1,1,1
+
+access_sp_actual_period_section_lines,sp actual period section lines,model_sp_actual_period_section_lines,,1,1,1,1
+
