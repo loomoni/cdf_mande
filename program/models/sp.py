@@ -86,7 +86,7 @@ class SPActualPeriodSectionLines(models.Model):
 
 class KeyResultAreaOutput(models.Model):
     _name = 'key.result.area.output.lines'
-    _rec_name = 'outcome_level'
+    _rec_name = 'output_level'
 
     output_level = fields.Char(string="Output level", required=True)
     description = fields.Text(string="Description", required=True)

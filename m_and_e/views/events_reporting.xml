@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Tree Event Reporting  view -->
+    <record id="event_reporting_tree_view" model="ir.ui.view">
+        <field name="name">event.reporting.tree.view</field>
+        <field name="model">event.reporting</field>
+        <field name="arch" type="xml">
+            <tree string="Event Reporting">
+                <field name="event_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form view event reporting-->
+    <record id="event_reporting_form_view_id" model="ir.ui.view">
+        <field name="name">event.reporting.form.view</field>
+        <field name="model">event.reporting</field>
+        <field name="arch" type="xml">
+            <form string="Event Reporting">
+
+                <sheet>
+                    <group string="General information">
+                        <group>
+                            <field name="event_type"
+                                   options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- outcomes action part -->
+    <record id="event_reporting_action_view" model="ir.actions.act_window">
+        <field name="name">Event Reporting</field>
+        <field name="res_model">event.reporting</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Event Reporting yet!!
+            </p>
+        </field>
+    </record>
+
+</odoo>

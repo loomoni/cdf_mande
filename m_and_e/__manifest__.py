@@ -14,12 +14,13 @@
     'version': '12.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'project', 'point_of_sale', 'report_xlsx'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
         # 'security/security.xml',
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+
         # 'views/views.xml',
         # 'views/configurations.xml',
         # 'views/outcomes.xml',
@@ -33,8 +34,9 @@
         # 'views/brand_remove.xml',
         # 'views/sp.xml',
         # 'views/national_strategy.xml',
-        # 'reports/report_template.xml',
-        # 'views/menu.xml',
+        'views/events_reporting.xml',
+        'views/menu.xml',
+
 
     ],
     # only loaded in demonstration mode

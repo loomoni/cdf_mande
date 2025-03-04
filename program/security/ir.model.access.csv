@@ -44,7 +44,35 @@ access_sp_actual_period_lines,sp actual period lines,model_sp_actual_period_line
 
 access_sp_actual_period_section_lines,sp actual period section lines,model_sp_actual_period_section_lines,,1,1,1,1
 
+access_key_result_area_output_lines,key result area output lines,model_key_result_area_output_lines,,1,1,1,
 
+access_kra_output_indicators,kra output indicators,model_kra_output_indicators,,1,1,1,1
+
+access_kra_output_unit_definition,kra output unit definition,model_kra_output_unit_definition,,1,1,1,1
+
+access_sp_output_actual_period_lines,sp output actual period lines,model_sp_output_actual_period_lines,,1,1,1,1
+
+access_sp_output_actual_period_section_lines,sp output actual period section lines,model_sp_output_actual_period_section_lines,,1,1,1,1
+
+access_program_project_outcomes_lines,program project outcomes lines,model_program_project_outcomes_lines,,1,1,1,1
+
+access_program_project_outcome_indicators,program project outcome indicators,model_program_project_outcome_indicators,,1,1,1,1
+
+access_program_project_unit_definition,program project unit definition,model_program_project_unit_definition,,1,1,1,1
+
+access_program_project_actual_period_lines,program project actual period lines,model_program_project_actual_period_lines,,1,1,1,1
+
+access_program_project_actual_period_section_lines,program project actual period section lines,model_program_project_actual_period_section_lines,,1,1,1,1
+
+access_program_project_output_lines,program project output lines,model_program_project_output_lines,,1,1,1,1
+
+access_program_project_output_indicators,program project output indicators,model_program_project_output_indicators,,1,1,1,1
+
+access_program_project_output_unit_definition,program project output unit definition,model_program_project_output_unit_definition,,1,1,1,1
+
+access_program_project_output_actual_period_lines,program project output actual period lines,model_program_project_output_actual_period_lines,,1,1,1,1
+
+access_program_project_output_actual_period_section_lines,program project output actual period section lines,model_program_project_output_actual_period_section_lines,,1,1,1,1
 
 
 
