@@ -21,10 +21,88 @@
                 <sheet>
                     <group string="General information">
                         <group>
-                            <field name="event_type"
+                            <field name="event_type"/>
+                            <!--                                   options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>-->
+                            <field name="venue"/>
+                            <field name="partner"/>
+                            <field name="conduct_by"/>
+                            <!--                                   options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>-->
+
+                        </group>
+                        <group>
+                            <field name="event_date_start"/>
+                            <field name="event_date_closing"/>
+                            <field name="reported_for"/>
+                            <field name="reporting_date"/>
+                        </group>
+
+                    </group>
+                    <group>
+                        <group>
+                            <field name="event_coordinator"/>
+                            <field name="title"/>
+                        </group>
+                        <group>
+                            <field name="region"
                                    options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="district"
+                                   options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                            <field name="ward"/>
                         </group>
                     </group>
+
+                    <group>
+                        <field name="project_name"
+                               options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                    </group>
+                    <notebook>
+                        <page string="Objective/s of the event">
+                            <group>
+                                <field name="introducation"/>
+                                <field name="overall_objectives"/>
+                                <field name="specific_objectives"/>
+                            </group>
+                            <group string="Contribution to the SP">
+                                <group>
+                                    <field name="strategic_plan" widget="many2many_tags"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+
+                                </group>
+                                <group>
+                                    <field name="sp_indicators"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Event Description">
+                            <group string="Description of the event and the processes of delivery">
+
+                            </group>
+                            <field name="description_of_the_event"/>
+                        </page>
+
+                        <page string="Achievements">
+                            <group string="Outcome Achievement"></group>
+                            <field name="achievements_reporting_lines">
+                                <tree editable="bottom">
+                                    <field name="outcome_output_indicator"/>
+                                    <field name="outcome_unit_definition"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="outcome_year"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="actual_value_year"/>
+                                    <field name="outcome_actual_period"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="section_actual_period"/>
+                                    <field name="gender"/>
+                                    <field name="arrived"/>
+                                    <field name="actual_value"/>
+                                    <field name="achievements_reporting_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
