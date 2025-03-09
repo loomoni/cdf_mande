@@ -74,13 +74,14 @@ class EventResultAchievement(models.Model):
             sections.append(section.id)
         return {'domain': {'outcome_actual_period': [('actual_period_section_line', 'in', sections)]}}
 
-    outcome_output_indicator = fields.Many2one(comodel_name='outcome.indicators', string='Outcome Indicator')
-    output_indicator = fields.Many2one(comodel_name='output.indicators', string='Outcome')
-    outcome_unit_definition = fields.Many2one(comodel_name='unit.definition', string='Unit/Definition')
-    outcome_year = fields.Many2one(comodel_name='actual.period.lines', string='Year')
+    outcome_output_indicator = fields.Many2one(comodel_name='program.project.outcome.indicators', string='Outcome Indicator')
+    output_indicator = fields.Many2one(comodel_name='program.project.output.indicators', string='Outcome')
+    outcome_unit_definition = fields.Many2one(comodel_name='program.project.unit.definition', string='Unit'
+                                                                                                            '/Definition')
+    outcome_year = fields.Many2one(comodel_name='program.project.actual.period.lines', string='Year')
     actual_value_year = fields.Integer(string='Year Target', related="outcome_year.target_value")
-    outcome_actual_period = fields.Many2one(comodel_name='actual.period.section.lines', string='Period')
-    section_actual_period = fields.Integer(string='Target Value', related='outcome_actual_period.target_actual_value')
+    outcome_actual_period = fields.Many2one(comodel_name='program.project.actual.period.section.lines', string='Period')
+    section_actual_period = fields.Integer(string='Target Value', related='outcome_actual_period.target_value')
     arrived = fields.Integer(string='Arrived')
     actual_value = fields.Integer(string='Achievement')
     achievements_reporting_id = fields.Many2one(comodel_name='event.reporting', string='Achievement ID')
