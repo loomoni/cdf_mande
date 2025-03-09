@@ -20,4 +20,23 @@
               parent="m_and_e_main_menu"
               sequence="2"/>
 
+
+    <menuitem id="learning_id"
+              name="Learnings"
+              parent="m_and_e_main_menu"
+              sequence="3"/>
+
+
+    <menuitem action="success_story_action_view"
+              id="case_study_id"
+              name="Case Study"
+              parent="learning_id"
+              sequence="1"/>
+
+    <menuitem action="success_story_action_view"
+              id="success_story_id"
+              name="Success Story"
+              parent="learning_id"
+              sequence="2"/>
+
 </odoo>

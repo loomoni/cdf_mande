@@ -6,6 +6,8 @@ access_event_result_achievement,event result achievement,model_event_result_achi
 
 access_budget_utilized,ebudget utilized,model_budget_utilized,,1,1,1,1
 
+access_success_story,success story,model_success_story,,1,1,1,1
+
 access_event_attachment_files,event attachment files,model_event_attachment_files,,1,1,1,1
 
 access_event_result_output_achievement,event result output achievement,model_event_result_output_achievement,,1,1,1,1

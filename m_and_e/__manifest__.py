@@ -29,7 +29,7 @@
         # 'views/dashboard_action.xml',
         # 'views/projects_view.xml',
         # 'views/activities_views.xml',
-        # 'views/success_story.xml',
+        'views/success_story.xml',
         # 'reports/report.xml',
         # 'views/brand_remove.xml',
         # 'views/sp.xml',

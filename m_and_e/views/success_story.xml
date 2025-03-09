@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Tree success story view -->
+    <record id="success_story_tree_view" model="ir.ui.view">
+        <field name="name">success.story.tree.view</field>
+        <field name="model">success.story</field>
+        <field name="arch" type="xml">
+            <tree string="Success Story">
+                <field name="name"/>
+                <field name="site"/>
+                <field name="prepared_by"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form view success story-->
+    <record id="success_story_form_view_id" model="ir.ui.view">
+        <field name="name">success.story.form.view</field>
+        <field name="model">success.story</field>
+        <field name="arch" type="xml">
+            <form string="Success Story">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="site"/>
+                        </group>
+                        <group>
+                            <field name="prepared_by"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Story Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- success story action part -->
+    <record id="success_story_action_view" model="ir.actions.act_window">
+        <field name="name">Success Story</field>
+        <field name="res_model">success.story</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Success Story added yet !!
+            </p>
+        </field>
+    </record>
+
+</odoo>
