@@ -141,6 +141,37 @@
                                 </group>
                             </group>
                         </page>
+
+                         <page string="Challenges">
+                            <group>
+                                <field name="challenges_encountered"/>
+                            </group>
+                        </page>
+                        <page string="Lesson learned">
+                            <group string="participants feedbacks and staff observations ">
+                                <field name="lesson_learned"/>
+                            </group>
+                        </page>
+                        <page string="Way forward">
+                            <group>
+                                <field name="way_forward"/>
+                            </group>
+                        </page>
+                        <page string="Unexpected/Unintended Result">
+                            <group>
+                                <field name="unexpected_result"/>
+                            </group>
+                        </page>
+                        <page string="Attachments">
+                            <field name="event_attachment_files_lines">
+                                <tree editable="bottom">
+                                    <field name="attachment_name"/>
+                                    <field name="attachment" filename="attachment_file_name"/>
+                                    <field name="attachment_file_name" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">

@@ -64,6 +64,9 @@ class EventReporting(models.Model):
                                                           inverse_name="achievements_output_reporting_id",
                                                           string="Achievement IDs", required=False, )
 
+    event_attachment_files_lines = fields.One2many(comodel_name="event.attachment.files",
+                                                   inverse_name="event_attachment_id",
+                                                   string="Attachment IDs", required=False, )
 
     @api.depends('budget', 'actual_budget')
     def balance_compute(self):
@@ -74,8 +77,6 @@ class EventReporting(models.Model):
     def actual_budget_compute(self):
         for rec in self:
             rec.actual_budget = 0 + sum(line.cost for line in rec.budget_description_line_ids)
-
-
 
 
 class EventResultAchievement(models.Model):
@@ -163,3 +164,13 @@ class BudgetUtilized(models.Model):
     cost = fields.Float(string="Cost")
     budget_description_id = fields.Many2one(comodel_name="event.reporting", string="Budget ID",
                                             required=False, readonly=True)
+
+
+class EventAttachmentFiles(models.Model):
+    _name = 'event.attachment.files'
+    _description = 'All result attachment'
+
+    attachment = fields.Binary(string="Attachment", attachment=True, store=True, )
+    attachment_name = fields.Char(string="Attachment Name")
+    attachment_file_name = fields.Char(string="Attachment file")
+    event_attachment_id = fields.Many2one("event.reporting", string="Attachment ID", required=False, )
