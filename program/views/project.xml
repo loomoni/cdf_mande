@@ -321,6 +321,42 @@
                                 </form>
                             </field>
                         </page>
+
+                          <!-- Project Activities -->
+                        <page string="Activities" name="Activities">
+                            <field name="project_activities_line_ids">
+                                <kanban>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <div class="oe_kanban_details d-flex flex-column">
+                                                    <strong>
+                                                        <field name="name"/>
+                                                    </strong>
+                                                    <div name="tags"/>
+                                                    <ul>
+                                                        <li>Description:
+                                                            <field name="user_id"/>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="user_id"/>
+                                        </group>
+
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+
                     </notebook>
 
                 </sheet>

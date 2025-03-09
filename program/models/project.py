@@ -23,6 +23,10 @@ class ProgramProject(models.Model):
                                               inverse_name="program_project_output_id",
                                               string="Output", required=False)
 
+    project_activities_line_ids = fields.One2many(comodel_name="project.activity",
+                                                  inverse_name="program_project_activity_id",
+                                                  string="Activity", required=False)
+
 
 class ProgramProjectOutcome(models.Model):
     _name = 'program.project.outcomes.lines'
@@ -163,3 +167,15 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
     output_actual_period_section_line = fields.Many2one(comodel_name="program.project.output.actual.period.lines",
                                                         string="Actual Period Section",
                                                         required=False, readonly=True)
+
+
+class ProjectActivity(models.Model):
+    _name = 'project.activity'
+
+    name = fields.Char(string="Name", required=True)
+    deadline = fields.Date(string="Deadline", required=True)
+    budget = fields.Date(string="Deadline", required=False)
+    user_id = fields.Many2one(comodel_name="res.users", string="Deadline", required=True)
+    description = fields.Html(string="Description", required=False)
+    program_project_activity_id = fields.Many2one(comodel_name="program.project", string="Activity", readonly=True,
+                                                  required=False, )
