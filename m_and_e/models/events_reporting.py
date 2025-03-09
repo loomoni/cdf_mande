@@ -44,6 +44,18 @@ class EventReporting(models.Model):
     way_forward = fields.Text(string="Way forward")
     unexpected_result = fields.Text(string="Unexpected/Unintended Result")
 
+    # Budget section
+    activity_addressed = fields.Many2one(comodel_name="project.activity", string="Activity addressed")
+    # budget_code = fields.Char(string="Budget Code")
+    currency_id = fields.Many2one("res.currency", string="Currency", required=False,
+                                  related='activity_addressed.currency_id')
+    budget = fields.Monetary(string="Planed Budget", related='activity_addressed.budget')
+    budget_description_line_ids = fields.One2many(comodel_name="budget.utilized",
+                                                  inverse_name="budget_description_id",
+                                                  string="Budget IDs", required=False, )
+    actual_budget = fields.Monetary(string="Actual Budget", compute='actual_budget_compute')
+    balance = fields.Monetary(string="Balance", compute='balance_compute')
+
     achievements_reporting_lines = fields.One2many(comodel_name="event.result.achievement",
                                                    inverse_name="achievements_reporting_id",
                                                    string="Achievement IDs", required=False, )
@@ -51,6 +63,19 @@ class EventReporting(models.Model):
     achievements_output_reporting_lines = fields.One2many(comodel_name="event.result.output.achievement",
                                                           inverse_name="achievements_output_reporting_id",
                                                           string="Achievement IDs", required=False, )
+
+
+    @api.depends('budget', 'actual_budget')
+    def balance_compute(self):
+        for rec in self:
+            rec.balance = rec.budget - rec.actual_budget
+
+    @api.depends('budget_description_line_ids.cost')
+    def actual_budget_compute(self):
+        for rec in self:
+            rec.actual_budget = 0 + sum(line.cost for line in rec.budget_description_line_ids)
+
+
 
 
 class EventResultAchievement(models.Model):
@@ -78,10 +103,11 @@ class EventResultAchievement(models.Model):
             sections.append(section.id)
         return {'domain': {'outcome_actual_period': [('actual_period_section_line', 'in', sections)]}}
 
-    outcome_output_indicator = fields.Many2one(comodel_name='program.project.outcome.indicators', string='Outcome Indicator')
+    outcome_output_indicator = fields.Many2one(comodel_name='program.project.outcome.indicators',
+                                               string='Outcome Indicator')
     output_indicator = fields.Many2one(comodel_name='program.project.output.indicators', string='Outcome')
     outcome_unit_definition = fields.Many2one(comodel_name='program.project.unit.definition', string='Unit'
-                                                                                                            '/Definition')
+                                                                                                     '/Definition')
     outcome_year = fields.Many2one(comodel_name='program.project.actual.period.lines', string='Year')
     actual_value_year = fields.Integer(string='Year Target', related="outcome_year.target_value")
     outcome_actual_period = fields.Many2one(comodel_name='program.project.actual.period.section.lines', string='Period')
@@ -117,10 +143,23 @@ class EventResultOutputAchievement(models.Model):
             sections.append(section.id)
         return {'domain': {'outcome_actual_period': [('output_actual_period_section_line', 'in', sections)]}}
 
-    outcome_output_indicator = fields.Many2one(comodel_name='program.project.output.indicators', string='Output Indicator')
-    outcome_unit_definition = fields.Many2one(comodel_name='program.project.output.unit.definition', string='Unit/Definition')
+    outcome_output_indicator = fields.Many2one(comodel_name='program.project.output.indicators',
+                                               string='Output Indicator')
+    outcome_unit_definition = fields.Many2one(comodel_name='program.project.output.unit.definition',
+                                              string='Unit/Definition')
     outcome_year = fields.Many2one(comodel_name='program.project.output.actual.period.lines', string='Year')
-    outcome_actual_period = fields.Many2one(comodel_name='program.project.output.actual.period.section.lines', string='Period')
+    outcome_actual_period = fields.Many2one(comodel_name='program.project.output.actual.period.section.lines',
+                                            string='Period')
     actual_value = fields.Integer(string='Value')
     achievements_output_reporting_id = fields.Many2one(comodel_name='event.reporting', string='Achievement')
 
+
+class BudgetUtilized(models.Model):
+    _name = 'budget.utilized'
+    _description = 'Table with the budget utilized'
+    _rec_name = "item"
+
+    item = fields.Char(string="Add Item Description")
+    cost = fields.Float(string="Cost")
+    budget_description_id = fields.Many2one(comodel_name="event.reporting", string="Budget ID",
+                                            required=False, readonly=True)

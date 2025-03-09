@@ -119,6 +119,28 @@
                             </field>
 
                         </page>
+
+                        <page string="Budget">
+                            <group string="Budget and other resource utilised : Include Budget code">
+                                <group>
+                                    <field name="activity_addressed"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="currency_id" options="{'no_open': True}"/>
+
+                                </group>
+                                <group>
+<!--                                    <field name="budget_code"/>-->
+                                     <field name="budget"/>
+                                </group>
+                                <!--                                <group>-->
+                                <field name="budget_description_line_ids"/>
+                                <!--                                </group>-->
+                                <group>
+                                    <field name="actual_budget"/>
+                                    <field name="balance"/>
+                                </group>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
