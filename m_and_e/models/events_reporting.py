@@ -48,6 +48,10 @@ class EventReporting(models.Model):
                                                    inverse_name="achievements_reporting_id",
                                                    string="Achievement IDs", required=False, )
 
+    achievements_output_reporting_lines = fields.One2many(comodel_name="event.result.output.achievement",
+                                                          inverse_name="achievements_output_reporting_id",
+                                                          string="Achievement IDs", required=False, )
+
 
 class EventResultAchievement(models.Model):
     _name = 'event.result.achievement'
@@ -86,3 +90,37 @@ class EventResultAchievement(models.Model):
     actual_value = fields.Integer(string='Achievement')
     achievements_reporting_id = fields.Many2one(comodel_name='event.reporting', string='Achievement ID')
     gender = fields.Selection([('female', 'Female'), ('men', 'Men'), ], string="Gender")
+
+
+class EventResultOutputAchievement(models.Model):
+    _name = 'event.result.output.achievement'
+    _description = 'All result achievement are stored in this table'
+
+    @api.onchange('outcome_output_indicator')
+    def _onchange_outcome_output_indicator_id(self):
+        sections = []
+        for section in self.outcome_output_indicator:
+            sections.append(section.id)
+        return {'domain': {'outcome_unit_definition': [('output_unit_definition_line', 'in', sections)]}}
+
+    @api.onchange('outcome_unit_definition')
+    def _onchange_outcome_unit_definition_id(self):
+        sections = []
+        for section in self.outcome_unit_definition:
+            sections.append(section.id)
+        return {'domain': {'outcome_year': [('output_unit_line_id', 'in', sections)]}}
+
+    @api.onchange('outcome_year')
+    def _onchange_outcome_year_id(self):
+        sections = []
+        for section in self.outcome_year:
+            sections.append(section.id)
+        return {'domain': {'outcome_actual_period': [('output_actual_period_section_line', 'in', sections)]}}
+
+    outcome_output_indicator = fields.Many2one(comodel_name='program.project.output.indicators', string='Output Indicator')
+    outcome_unit_definition = fields.Many2one(comodel_name='program.project.output.unit.definition', string='Unit/Definition')
+    outcome_year = fields.Many2one(comodel_name='program.project.output.actual.period.lines', string='Year')
+    outcome_actual_period = fields.Many2one(comodel_name='program.project.output.actual.period.section.lines', string='Period')
+    actual_value = fields.Integer(string='Value')
+    achievements_output_reporting_id = fields.Many2one(comodel_name='event.reporting', string='Achievement')
+

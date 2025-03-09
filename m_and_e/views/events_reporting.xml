@@ -101,6 +101,23 @@
                                     <field name="achievements_reporting_id" invisible="1"/>
                                 </tree>
                             </field>
+
+                            <group string="Output Achievement"></group>
+                            <field name="achievements_output_reporting_lines">
+                                <tree editable="bottom">
+                                    <field name="outcome_output_indicator"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="outcome_unit_definition"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="outcome_year"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="outcome_actual_period"
+                                           options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                                    <field name="actual_value"/>
+                                    <field name="achievements_output_reporting_id" invisible="1"/>
+                                </tree>
+                            </field>
+
                         </page>
                     </notebook>
                 </sheet>
