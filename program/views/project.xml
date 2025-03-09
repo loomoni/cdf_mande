@@ -322,7 +322,7 @@
                             </field>
                         </page>
 
-                          <!-- Project Activities -->
+                        <!-- Project Activities -->
                         <page string="Activities" name="Activities">
                             <field name="project_activities_line_ids">
                                 <kanban>
@@ -335,8 +335,13 @@
                                                     </strong>
                                                     <div name="tags"/>
                                                     <ul>
-                                                        <li>Description:
+                                                        <li>Assigned To:
                                                             <field name="user_id"/>
+                                                        </li>
+                                                    </ul>
+                                                      <ul>
+                                                        <li>Deadline:
+                                                            <field name="deadline"/>
                                                         </li>
                                                     </ul>
 
@@ -348,8 +353,18 @@
                                 <form>
                                     <sheet>
                                         <group>
-                                            <field name="name"/>
-                                            <field name="user_id"/>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="currency_id"/>
+                                            </group>
+                                            <group>
+                                                <field name="user_id"/>
+                                                <field name="deadline"/>
+                                                <field name="budget"/>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <field name="description"/>
                                         </group>
 
                                     </sheet>

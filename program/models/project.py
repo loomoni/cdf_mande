@@ -172,10 +172,11 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
 class ProjectActivity(models.Model):
     _name = 'project.activity'
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Char(string="Activity", required=True)
     deadline = fields.Date(string="Deadline", required=True)
-    budget = fields.Date(string="Deadline", required=False)
-    user_id = fields.Many2one(comodel_name="res.users", string="Deadline", required=True)
+    currency_id = fields.Many2one('res.currency', string='Currency')
+    budget = fields.Monetary(string="Budget", currency_field='currency_id')
+    user_id = fields.Many2one(comodel_name="res.users", string="Assigned To", required=True)
     description = fields.Html(string="Description", required=False)
     program_project_activity_id = fields.Many2one(comodel_name="program.project", string="Activity", readonly=True,
                                                   required=False, )
