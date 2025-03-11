@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
            <kanban>
                 <field name="name"/>
-                <field name="output_success_percent"/>
+                <field name="outcome_success_percent"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_card">
@@ -18,11 +18,11 @@
                                 <div class="progress">
                                     <div class="progress-bar"
                                          role="progressbar"
-                                         t-att-style="'width:' + (record.output_success_percent.value or '0') + '%;'"
-                                         t-att-title="(record.output_success_percent.value or '0') + '%'">
+                                         t-att-style="'width:' + (record.outcome_success_percent.value or '0') + '%;'"
+                                         t-att-title="(record.outcome_success_percent.value or '0') + '%'">
                                     </div>
                                     <span class="progress-percent">
-                                        <t t-esc="record.output_success_percent.value or '0'"/>%
+                                        <t t-esc="record.outcome_success_percent.value or '0'"/>%
                                     </span>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
         <field name="arch" type="xml">
             <graph type="bar">
                 <field name="name"/>
-                <field name="output_success_percent" type="measure"/>
+                <field name="outcome_success_percent" type="measure"/>
             </graph>
         </field>
     </record>

@@ -13,6 +13,19 @@ class ProgramProject(models.Model):
     start_date = fields.Date(string="Start Date")
     end_date = fields.Date(string="End Date")
     code = fields.Char(string="Code")
+
+    target_outcome_result = fields.Integer(string="Target Outcome Indicator Result", compute="_compute_outcome_results",
+                                           store=True)
+    actual_outcome_result = fields.Integer(string="Actual Outcome Indicator Result", compute="_compute_outcome_results",
+                                           store=True)
+    outcome_success_percent = fields.Float(string="Outcome Success (%)", compute="_compute_outcome_results", store=True)
+
+    target_output_result = fields.Integer(string="Target Output Indicator Result", compute="_compute_output_results",
+                                          store=True)
+    actual_output_result = fields.Integer(string="Actual Output Indicator Result", compute="_compute_output_results",
+                                          store=True)
+    output_success_percent = fields.Float(string="Output Success (%)", compute="_compute_output_results", store=True)
+
     total_budget_used = fields.Monetary(string="Total Budget Used", currency_field='currency_id')
     total_budget_remain = fields.Monetary(string="Total Budget Remain", currency_field='currency_id')
     active = fields.Boolean(string="Active", default=True)
@@ -26,6 +39,56 @@ class ProgramProject(models.Model):
     project_activities_line_ids = fields.One2many(comodel_name="project.activity",
                                                   inverse_name="program_project_activity_id",
                                                   string="Activity", required=False)
+
+    # @api.depends('program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
+    #              '.actual_period_line_ids.target_value')
+    # def _compute_outcome_target(self):
+    #     for rec in self:
+    #         total_target_value = 0
+    #         for outcome in rec.program_project_outcome_line_ids:
+    #             for indicator in outcome.program_outcome_indicator_line_ids:
+    #                 for unit in indicator.unit_definition_line_ids:
+    #                     for period in unit.actual_period_line_ids:
+    #                         total_target_value += period.target_value
+    #
+    #         rec.target_outcome_result = total_target_value
+
+    @api.multi
+    @api.depends('program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
+                 '.actual_period_line_ids.target_value',
+                 'program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
+                 '.actual_period_line_ids.real_actual_value')
+    def _compute_outcome_results(self):
+        for project in self:
+            target_total = 0
+            actual_total = 0
+
+            for outcome in project.program_project_outcome_line_ids:
+                for indicator in outcome.program_outcome_indicator_line_ids:
+                    for unit in indicator.unit_definition_line_ids:
+                        for period in unit.actual_period_line_ids:
+                            target_total += period.target_value
+                            actual_total += period.real_actual_value
+
+            project.target_outcome_result = target_total
+            project.actual_outcome_result = actual_total
+            project.outcome_success_percent = (actual_total / target_total * 100) if target_total > 0 else 0
+
+    def _compute_output_results(self):
+        for project in self:
+            target_total = 0
+            actual_total = 0
+
+            for output in project.program_output_line_ids:
+                for indicator in output.program_output_indicator_line_ids:
+                    for unit in indicator.program_output_unit_definition_line_ids:
+                        for period in unit.output_actual_period_line_ids:
+                            target_total += period.target_value
+                            actual_total += period.real_actual_value
+
+            project.target_output_result = target_total
+            project.actual_output_result = actual_total
+            project.output_success_percent = (actual_total / target_total * 100) if target_total > 0 else 0
 
 
 class ProgramProjectOutcome(models.Model):
@@ -90,7 +153,7 @@ class ProgramProjectActualPeriodLines(models.Model):
         achievement = self.env['event.result.achievement']
         for rec in self:
             current_value = 0
-            achievement_ids = achievement.search([('outcome_year.id', '=', rec.actual_period.id)])
+            achievement_ids = achievement.search([('outcome_year', '=', rec.actual_period.id)])
             if achievement_ids:
                 for achievement in achievement_ids:
                     # amount = achievement amount
@@ -106,7 +169,8 @@ class ProgramProjectActualPeriodSectionLines(models.Model):
     actual_period_section = fields.Many2one(comodel_name="target.period.lines", string="Actual Section Period",
                                             required=False)
     target_value = fields.Integer(string="Target value", required=False, )
-    real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True, compute="_compute_outcome_total_actual_value")
+    real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True,
+                                       compute="_compute_outcome_total_actual_value")
     actual_period_section_line = fields.Many2one(comodel_name="program.project.actual.period.lines",
                                                  string="Actual Period Section",
                                                  required=False, readonly=True)
