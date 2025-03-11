@@ -9,7 +9,7 @@
     <!--              web_icon="m_and_e,static/description/icon.png"-->
 
 
-    <menuitem action="event_reporting_action_view"
+    <menuitem action="action_program_project_dashboard"
               id="dashboard_menu_mande_id"
               name="Dashboard"
               parent="m_and_e_main_menu"

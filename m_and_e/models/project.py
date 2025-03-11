@@ -74,9 +74,9 @@ class ProgramProjectActualPeriodLines(models.Model):
     _rec_name = 'actual_period'
 
     actual_period = fields.Many2one(comodel_name="target.period", string="Actual Period", required=True)
-    target_value = fields.Integer(string="Target Value", required=True)
+    target_value = fields.Integer(string="Target Value", required=True, store=True)
     real_actual_value = fields.Integer(string="Actual value", required=False, default=0, readonly=True,
-                                       compute="_compute_total_actual_value")
+                                       compute="_compute_total_actual_value", store=True)
     target_description = fields.Char(string="Target description", required=False)
     unit_line_id = fields.Many2one(comodel_name="program.project.unit.definition", string="Unit/Definition",
                                    required=False, readonly=True)

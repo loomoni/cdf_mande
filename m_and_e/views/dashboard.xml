@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_program_project_kanban" model="ir.ui.view">
+        <field name="name">program.project.kanban</field>
+        <field name="model">event.result.achievement</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="arrived"/>
+                <field name="actual_value"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card">
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <t t-esc="record.arrived.value"/>
+                                </strong>
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                         role="progressbar"
+                                         t-att-style="'width:' + (record.actual_value.value or '0') + '%;'"
+                                         t-att-title="(record.actual_value.value or '0') + '%'">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_program_project_graph" model="ir.ui.view">
+        <field name="name">program.project.graph</field>
+        <field name="model">event.result.achievement</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="arrived"/>
+                <field name="actual_value" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_program_project_dashboard" model="ir.actions.act_window">
+        <field name="name">Project Dashboard</field>
+        <field name="res_model">event.result.achievement</field>
+        <field name="view_mode">kanban,graph</field>
+    </record>
+</odoo>
