@@ -6,7 +6,15 @@
         <field name="model">event.reporting</field>
         <field name="arch" type="xml">
             <tree string="Event Reporting">
-                <field name="event_type"/>
+                 <field name="event_type"/>
+                <field name="venue"/>
+                <field name="partner"/>
+                <field name="conduct_by"/>
+                <field name="event_date_start"/>
+                <field name="event_date_closing"/>
+                <field name="reported_for"/>
+                <field name="reporting_date"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
