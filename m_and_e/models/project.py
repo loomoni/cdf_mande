@@ -172,8 +172,37 @@ class ProgramProjectActualPeriodSectionLines(models.Model):
     real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True,
                                        compute="_compute_outcome_total_actual_value")
     actual_period_section_line = fields.Many2one(comodel_name="program.project.actual.period.lines",
-                                                 string="Actual Period Section",
+                                                 string="Actual Period",
                                                  required=False, readonly=True)
+
+    outcome_indicator = fields.Many2one(
+        related="actual_period_section_line.unit_line_id.unit_definition_line.outcome_indicator",
+        string="Outcome Indicator", store=True, readonly=True
+    )
+
+    # Related Project ID for Grouping
+    project_id = fields.Many2one(
+        comodel_name="program.project",
+        string="Project",
+        store=True,
+        readonly=True,
+        related="actual_period_section_line.unit_line_id.unit_definition_line.program_outcome_indicator_id.program_project_id"
+    )
+
+    # Success Percentage Field
+    success_percentage = fields.Float(
+        string="Success Percentage",
+        compute="_compute_success_percentage",
+        store=True
+    )
+
+    @api.depends('real_actual_value', 'target_value')
+    def _compute_success_percentage(self):
+        for rec in self:
+            if rec.target_value and rec.target_value > 0:
+                rec.success_percentage = (rec.real_actual_value / rec.target_value) * 100
+            else:
+                rec.success_percentage = 0.0
 
     @api.multi
     def _compute_outcome_total_actual_value(self):
@@ -249,6 +278,19 @@ class ProgramProjectOutputActualPeriodLines(models.Model):
         inverse_name="output_actual_period_section_line",
         string="Section Period", required=False, )
 
+    output_indicator = fields.Many2one(related="output_unit_line_id.output_unit_definition_line.output_indicator",
+                                       string="Output Indicator", store=True, readonly=True)
+
+    percentage_result = fields.Float(string="Percentage Result", compute="_compute_percentage_result", store=True)
+
+    @api.depends('target_value', 'real_actual_value')
+    def _compute_percentage_result(self):
+        for record in self:
+            if record.target_value > 0:
+                record.percentage_result = (record.real_actual_value / record.target_value) * 100
+            else:
+                record.percentage_result = 0
+
     @api.multi
     def compute_total_actual_value(self):
         # self : model shift
@@ -274,8 +316,28 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
     real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True,
                                        compute="compute_output_total_actual_value")
     output_actual_period_section_line = fields.Many2one(comodel_name="program.project.output.actual.period.lines",
-                                                        string="Actual Period Section",
+                                                        string="Actual Period",
                                                         required=False, readonly=True)
+
+    percentage_result = fields.Float(string="Success %", compute="_compute_success_percentage", store=True)
+    output_indicator = fields.Many2one(
+        related="output_actual_period_section_line.output_unit_line_id.output_unit_definition_line.output_indicator",
+        string="Output Indicator", store=True, readonly=True
+    )
+
+    project_id = fields.Many2one(
+        comodel_name="program.project", string="Project", store=True, readonly=True,
+        related="output_actual_period_section_line.output_unit_line_id.output_unit_definition_line.program_output_indicator_id.program_project_output_id"
+
+    )
+
+    @api.depends('target_value', 'real_actual_value')
+    def _compute_success_percentage(self):
+        for rec in self:
+            if rec.target_value > 0:
+                rec.percentage_result = (rec.real_actual_value / rec.target_value) * 100
+            else:
+                rec.percentage_result = 0
 
     @api.multi
     def compute_output_total_actual_value(self):

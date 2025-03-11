@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_program_project_kanban" model="ir.ui.view">
+    <record id="view_program_project_outcome_kanban" model="ir.ui.view">
         <field name="name">program.project.kanban</field>
-        <field name="model">program.project</field>
+        <field name="model">program.project.actual.period.section.lines</field>
         <field name="arch" type="xml">
            <kanban>
-                <field name="name"/>
-                <field name="outcome_success_percent"/>
+                <field name="outcome_indicator"/>
+                <field name="success_percentage"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_card">
                             <div class="oe_kanban_details">
                                 <p>
-                                    <t t-esc="record.name.value"/>
+                                    <t t-esc="record.outcome_indicator.value"/>
                                 </p>
                                 <br/>
                                 <div class="progress">
                                     <div class="progress-bar"
                                          role="progressbar"
-                                         t-att-style="'width:' + (record.outcome_success_percent.value or '0') + '%;'"
-                                         t-att-title="(record.outcome_success_percent.value or '0') + '%'">
+                                         t-att-style="'width:' + (record.success_percentage.value or '0') + '%;'"
+                                         t-att-title="(record.success_percentage.value or '0') + '%'">
                                     </div>
                                     <span class="progress-percent">
-                                        <t t-esc="record.outcome_success_percent.value or '0'"/>%
+                                        <t t-esc="record.success_percentage.value or '0'"/>%
                                     </span>
                                 </div>
                             </div>
@@ -33,20 +33,21 @@
         </field>
     </record>
 
-    <record id="view_program_project_graph" model="ir.ui.view">
+    <record id="view_program_project_outcome_graph" model="ir.ui.view">
         <field name="name">program.project.graph</field>
-        <field name="model">program.project</field>
+        <field name="model">program.project.actual.period.section.lines</field>
         <field name="arch" type="xml">
             <graph type="bar">
-                <field name="name"/>
-                <field name="outcome_success_percent" type="measure"/>
+                <field name="outcome_indicator"/>
+                <field name="success_percentage" type="measure"/>
             </graph>
         </field>
     </record>
 
-    <record id="action_program_project_dashboard" model="ir.actions.act_window">
-        <field name="name">Project Dashboard</field>
-        <field name="res_model">program.project</field>
+    <record id="action_program_project_outcome_dashboard" model="ir.actions.act_window">
+        <field name="name">Outcome Dashboard</field>
+        <field name="res_model">program.project.actual.period.section.lines</field>
         <field name="view_mode">kanban,graph</field>
     </record>
+
 </odoo>

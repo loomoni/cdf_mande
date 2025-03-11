@@ -9,11 +9,32 @@
     <!--              web_icon="m_and_e,static/description/icon.png"-->
 
 
-    <menuitem action="action_program_project_dashboard"
-              id="dashboard_menu_mande_id"
+    <menuitem id="dashboard_menu_mande_id"
               name="Dashboard"
               parent="m_and_e_main_menu"
               sequence="1"/>
+
+
+
+    <menuitem action="action_program_project_dashboard"
+              id="dashboard_menu_mande_id2"
+              name="Projects"
+              parent="dashboard_menu_mande_id"
+              sequence="1"/>
+
+    <menuitem action="action_program_project_outcome_dashboard"
+              id="dashboard_menu_mande_id3"
+              name="Outcome Indicator"
+              parent="dashboard_menu_mande_id"
+              sequence="1"/>
+
+    <menuitem action="action_program_project_output_section_dashboard"
+              id="dashboard_menu_mande_id4"
+              name="Output Indicators"
+              parent="dashboard_menu_mande_id"
+              sequence="2"/>
+
+
 
     <menuitem action="event_reporting_action_view"
               id="event_reporting_id"

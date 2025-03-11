@@ -26,6 +26,8 @@
         # 'views/output.xml',
         # 'views/event_reporting.xml',
         'views/dashboard.xml',
+        'views/output_dashboard.xml',
+        'views/outcome_dashboard.xml',
         # 'views/projects_view.xml',
         # 'views/activities_views.xml',
         'views/success_story.xml',
