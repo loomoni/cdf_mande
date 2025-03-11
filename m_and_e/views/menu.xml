@@ -3,6 +3,7 @@
     <!-- Top menu item -->
     <menuitem name="M &amp; E"
               id="m_and_e_main_menu"
+              web_icon="program,static/description/icon.png"
               sequence="52"/>
 
     <!--              web_icon="m_and_e,static/description/icon.png"-->
@@ -38,5 +39,67 @@
               name="Success Story"
               parent="learning_id"
               sequence="2"/>
+
+
+    <!--    Program Menu -->
+
+    <!-- Top menu item -->
+    <menuitem id="program_main_menu"
+              sequence="51"
+              name="Program"
+
+    />
+
+    <!--    SP Menus -->
+
+    <menuitem
+            id="strategic_plan_id"
+            name="SP"
+            parent="program_main_menu"
+            sequence="1"/>
+
+    <menuitem id="menu_program_project"
+              name="Projects"
+              parent="program_main_menu"
+              sequence="2"
+              action="action_program_project"/>
+
+    <menuitem
+            id="strategic_plan_outcome_id"
+            parent="strategic_plan_id"
+            name="Key Result Area (KRA)"
+            action="key_result_area_action_view"
+            sequence="2"/>
+
+    <!--         Configuration menu-->
+    <menuitem id="configuration_root_menu"
+              name="Configurations"
+              parent="program_main_menu"
+              sequence="11"/>
+
+    <menuitem id="region_configuration_menu"
+              name="Region &amp; District"
+              parent="configuration_root_menu"
+              action="region_action_view"
+              sequence="1"/>
+
+    <menuitem id="unit_menu_id"
+              name="Unit"
+              parent="configuration_root_menu"
+              action="unit_action_view"
+              sequence="2"/>
+
+    <menuitem id="target_period_id"
+              name="Target Period"
+              parent="configuration_root_menu"
+              action="target_period_action_view"
+              sequence="3"/>
+
+    <menuitem id="indicators_menu_id"
+              name="Indicators"
+              parent="configuration_root_menu"
+              action="indicators_action_view"
+              sequence="4"/>
+
 
 </odoo>

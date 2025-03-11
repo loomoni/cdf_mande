@@ -14,15 +14,14 @@
     'version': '12.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'program'],
+    'depends': ['base', 'mail'],
 
     # always loaded
     'data': [
         # 'security/security.xml',
         'security/ir.model.access.csv',
-
-        # 'views/views.xml',
-        # 'views/configurations.xml',
+        'views/project.xml',
+        'views/configurations.xml',
         # 'views/outcomes.xml',
         # 'views/output.xml',
         # 'views/event_reporting.xml',
@@ -32,7 +31,7 @@
         'views/success_story.xml',
         # 'reports/report.xml',
         # 'views/brand_remove.xml',
-        # 'views/sp.xml',
+        'views/sp.xml',
         # 'views/national_strategy.xml',
         'views/events_reporting.xml',
         'views/menu.xml',

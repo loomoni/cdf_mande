@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Tree Key Result Area view -->
+    <record id="key_result_area_tree_view" model="ir.ui.view">
+        <field name="name">key.result.area.tree.view</field>
+        <field name="model">key.result.area</field>
+        <field name="arch" type="xml">
+            <tree string="Key Result Area">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form view Key Result Area-->
+    <record id="strategic_plan_form_view_id" model="ir.ui.view">
+        <field name="name">key.result.area.form.view</field>
+        <field name="model">key.result.area</field>
+        <field name="arch" type="xml">
+            <form string="Key Result Area">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <!-- KRA OUTCOME -->
+                        <page string="Outcome" name="Outcome">
+                            <field name="outcome_line_ids">
+                                <kanban>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <div class="oe_kanban_details d-flex flex-column">
+                                                    <strong>
+                                                        <field name="outcome_level"/>
+                                                    </strong>
+                                                    <div name="tags"/>
+                                                    <ul>
+                                                        <li>Description:
+                                                            <field name="description"/>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="outcome_level"/>
+                                            <field name="description"/>
+                                        </group>
+                                        <notebook>
+                                            <page string="Indicators" name="Indicators">
+                                                <field name="kra_outcome_indicator_line_ids">
+                                                    <tree>
+                                                        <field name="outcome_indicator"/>
+                                                        <field name="what_to_measure"/>
+                                                        <field name="baseline_value"/>
+                                                    </tree>
+                                                    <form>
+                                                        <sheet>
+                                                            <group>
+                                                                <field name="outcome_indicator"/>
+                                                            </group>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="what_to_measure"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="baseline_value"/>
+                                                                </group>
+                                                            </group>
+                                                            <notebook>
+                                                                <page string="Unit Definition" name="unit">
+                                                                    <field name="unit_definition_line_ids">
+                                                                        <tree>
+                                                                            <field name="unit"/>
+                                                                        </tree>
+                                                                        <form>
+                                                                            <group>
+                                                                                <field name="unit"/>
+                                                                            </group>
+                                                                            <notebook>
+                                                                                <page string="Actual Period"
+                                                                                      name="actual">
+                                                                                    <field name="actual_period_line_ids">
+                                                                                        <tree>
+                                                                                            <field name="actual_period"/>
+                                                                                            <field name="target_description"/>
+                                                                                            <field name="target_value"/>
+                                                                                            <field name="real_actual_value"/>
+                                                                                        </tree>
+                                                                                        <form>
+                                                                                            <group>
+                                                                                                <group>
+                                                                                                    <field name="actual_period"/>
+                                                                                                    <field name="target_description"/>
+                                                                                                </group>
+                                                                                                <group>
+                                                                                                    <field name="target_value"/>
+                                                                                                    <field name="real_actual_value"/>
+                                                                                                </group>
+                                                                                            </group>
+                                                                                            <notebook>
+                                                                                                <page string="Actual Section Period"
+                                                                                                      name="section">
+                                                                                                    <field name="actual_period_section_line_ids">
+                                                                                                        <tree>
+                                                                                                            <field name="actual_period_section"/>
+                                                                                                            <field name="target_value"/>
+                                                                                                            <field name="real_actual_value"/>
+                                                                                                        </tree>
+                                                                                                        <form>
+                                                                                                            <group>
+                                                                                                                <group>
+                                                                                                                    <field name="actual_period_section"/>
+                                                                                                                </group>
+                                                                                                                <group>
+                                                                                                                    <field name="target_value"/>
+                                                                                                                    <field name="real_actual_value"/>
+                                                                                                                </group>
+                                                                                                            </group>
+                                                                                                        </form>
+                                                                                                    </field>
+                                                                                                </page>
+                                                                                            </notebook>
+                                                                                        </form>
+                                                                                    </field>
+                                                                                </page>
+                                                                            </notebook>
+                                                                        </form>
+                                                                    </field>
+                                                                </page>
+                                                            </notebook>
+                                                        </sheet>
+                                                    </form>
+
+                                                </field>
+                                            </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <!-- KRA Output -->
+                        <page string="Output" name="Output">
+                            <field name="output_line_ids">
+                                <kanban>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <div class="oe_kanban_details d-flex flex-column">
+                                                    <strong>
+                                                        <field name="output_level"/>
+                                                    </strong>
+                                                    <div name="tags"/>
+                                                    <ul>
+                                                        <li>Description:
+                                                            <field name="description"/>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="output_level"/>
+                                            <field name="description"/>
+                                        </group>
+                                        <notebook>
+                                            <page string="Indicators" name="Indicators">
+                                                <field name="kra_output_indicator_line_ids">
+                                                    <tree>
+                                                        <field name="output_indicator"/>
+                                                        <field name="what_to_measure"/>
+                                                        <field name="baseline_value"/>
+                                                    </tree>
+                                                    <form>
+                                                        <sheet>
+                                                            <group>
+                                                                <field name="output_indicator"/>
+                                                            </group>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="what_to_measure"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="baseline_value"/>
+                                                                </group>
+                                                            </group>
+                                                            <notebook>
+                                                                <page string="Unit Definition" name="unit">
+                                                                    <field name="kra_output_unit_definition_line_ids">
+                                                                        <tree>
+                                                                            <field name="unit"/>
+                                                                        </tree>
+                                                                        <form>
+                                                                            <group>
+                                                                                <field name="unit"/>
+                                                                            </group>
+                                                                            <notebook>
+                                                                                <page string="Actual Period"
+                                                                                      name="actual">
+                                                                                    <field name="output_actual_period_line_ids">
+                                                                                        <tree>
+                                                                                            <field name="actual_period"/>
+                                                                                            <field name="target_description"/>
+                                                                                            <field name="target_value"/>
+                                                                                            <field name="real_actual_value"/>
+                                                                                        </tree>
+                                                                                        <form>
+                                                                                            <group>
+                                                                                                <group>
+                                                                                                    <field name="actual_period"/>
+                                                                                                    <field name="target_description"/>
+                                                                                                </group>
+                                                                                                <group>
+                                                                                                    <field name="target_value"/>
+                                                                                                    <field name="real_actual_value"/>
+                                                                                                </group>
+                                                                                            </group>
+                                                                                            <notebook>
+                                                                                                <page string="Actual Section Period"
+                                                                                                      name="section">
+                                                                                                    <field name="output_actual_period_section_line_ids">
+                                                                                                        <tree>
+                                                                                                            <field name="actual_period_section"/>
+                                                                                                            <field name="target_value"/>
+                                                                                                            <field name="real_actual_value"/>
+                                                                                                        </tree>
+                                                                                                        <form>
+                                                                                                            <group>
+                                                                                                                <group>
+                                                                                                                    <field name="actual_period_section"/>
+                                                                                                                </group>
+                                                                                                                <group>
+                                                                                                                    <field name="target_value"/>
+                                                                                                                    <field name="real_actual_value"/>
+                                                                                                                </group>
+                                                                                                            </group>
+                                                                                                        </form>
+                                                                                                    </field>
+                                                                                                </page>
+                                                                                            </notebook>
+                                                                                        </form>
+                                                                                    </field>
+                                                                                </page>
+                                                                            </notebook>
+                                                                        </form>
+                                                                    </field>
+                                                                </page>
+                                                            </notebook>
+                                                        </sheet>
+                                                    </form>
+
+                                                </field>
+                                            </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- output action part -->
+    <record id="key_result_area_action_view" model="ir.actions.act_window">
+        <field name="name">Key Result Area</field>
+        <field name="res_model">key.result.area</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Strategic Plan Goal added yet !!
+            </p>
+        </field>
+    </record>
+
+</odoo>
+

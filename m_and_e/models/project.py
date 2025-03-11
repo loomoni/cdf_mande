@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class ProgramProject(models.Model):
@@ -163,10 +163,25 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
     actual_period_section = fields.Many2one(comodel_name="target.period.lines", string="Actual Section Period",
                                             required=False)
     target_value = fields.Integer(string="Target value", required=False, )
-    real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True)
+    real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True,
+                                       compute="compute_output_total_actual_value")
     output_actual_period_section_line = fields.Many2one(comodel_name="program.project.output.actual.period.lines",
                                                         string="Actual Period Section",
                                                         required=False, readonly=True)
+
+    @api.multi
+    def compute_output_total_actual_value(self):
+        # self : model shift
+        achievement = self.env['event.result.output.achievement']
+        for rec in self:
+            current_value = 0
+            achievement_ids = achievement.search([('outcome_actual_period', '=', rec.id)])
+            if achievement_ids:
+                for achievement in achievement_ids:
+                    # amount = achievement amount
+                    current_value += achievement.actual_value
+
+            rec.real_output_actual_value = 0 + current_value
 
 
 class ProjectActivity(models.Model):

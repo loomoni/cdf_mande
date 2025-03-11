@@ -11,3 +11,71 @@ access_success_story,success story,model_success_story,,1,1,1,1
 access_event_attachment_files,event attachment files,model_event_attachment_files,,1,1,1,1
 
 access_event_result_output_achievement,event result output achievement,model_event_result_output_achievement,,1,1,1,1
+
+
+access_key_result_area,key result area access,model_key_result_area,,1,1,1,1
+
+access_key_result_area_lines,key result area lines access,model_key_result_area_outcomes_lines,,1,1,1,1
+
+access_key_result_area_outcomes_lines,key result area outcomes lines access,model_key_result_area_outcomes_lines,,1,1,1,1
+
+access_kra_outcome_indicators,kra outcome indicators access,model_kra_outcome_indicators,,1,1,1,1
+
+access_program_project,program project goal,model_program_project,,1,1,1,1
+
+access_region_access,region access,model_region,,1,1,1,1
+
+access_events_configuration,events configuration,model_events_configuration,,1,1,1,1
+
+access_district_lines,district lines,model_district_lines,,1,1,1,1
+
+access_me_indicators,me indicators,model_me_indicators,,1,1,1,1
+
+access_target_period,target period,model_target_period,,1,1,1,1
+
+access_target_period_lines,target period lines,model_target_period_lines,,1,1,1,1
+
+access_unit_configuration,unit configuration,model_unit_configuration,,1,1,1,1
+
+access_sp_unit_definition,sp unit definition,model_sp_unit_definition,,1,1,1,1
+
+access_sp_actual_period_lines,sp actual period lines,model_sp_actual_period_lines,,1,1,1,1
+
+access_sp_actual_period_section_lines,sp actual period section lines,model_sp_actual_period_section_lines,,1,1,1,1
+
+access_key_result_area_output_lines,key result area output lines,model_key_result_area_output_lines,,1,1,1,
+
+access_kra_output_indicators,kra output indicators,model_kra_output_indicators,,1,1,1,1
+
+access_kra_output_unit_definition,kra output unit definition,model_kra_output_unit_definition,,1,1,1,1
+
+access_sp_output_actual_period_lines,sp output actual period lines,model_sp_output_actual_period_lines,,1,1,1,1
+
+access_sp_output_actual_period_section_lines,sp output actual period section lines,model_sp_output_actual_period_section_lines,,1,1,1,1
+
+access_program_project_outcomes_lines,program project outcomes lines,model_program_project_outcomes_lines,,1,1,1,1
+
+access_program_project_outcome_indicators,program project outcome indicators,model_program_project_outcome_indicators,,1,1,1,1
+
+access_program_project_unit_definition,program project unit definition,model_program_project_unit_definition,,1,1,1,1
+
+access_program_project_actual_period_lines,program project actual period lines,model_program_project_actual_period_lines,,1,1,1,1
+
+access_program_project_actual_period_section_lines,program project actual period section lines,model_program_project_actual_period_section_lines,,1,1,1,1
+
+access_project_activity,project activity,model_project_activity,,1,1,1,1
+
+access_program_project_output_lines,program project output lines,model_program_project_output_lines,,1,1,1,1
+
+access_program_project_output_indicators,program project output indicators,model_program_project_output_indicators,,1,1,1,1
+
+access_program_project_output_unit_definition,program project output unit definition,model_program_project_output_unit_definition,,1,1,1,1
+
+access_program_project_output_actual_period_lines,program project output actual period lines,model_program_project_output_actual_period_lines,,1,1,1,1
+
+access_program_project_output_actual_period_section_lines,program project output actual period section lines,model_program_project_output_actual_period_section_lines,,1,1,1,1
+
+
+
+
+
