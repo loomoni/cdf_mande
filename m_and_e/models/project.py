@@ -8,6 +8,7 @@ class ProgramProject(models.Model):
     name = fields.Char(string="Project Name", required=True)
     description = fields.Html(string="Description Project")
     funder = fields.Char(string="Funder")
+    sp_id = fields.Many2one(comodel_name="key.result.area", string="SP", required=True)
     currency_id = fields.Many2one('res.currency', string="Currency")
     budget = fields.Monetary(string="Budget", currency_field='currency_id')
     start_date = fields.Date(string="Start Date")
@@ -97,6 +98,7 @@ class ProgramProjectOutcome(models.Model):
 
     outcome_level = fields.Char(string="Outcome level", required=True)
     description = fields.Text(string="Description", required=True)
+
     program_project_id = fields.Many2one(comodel_name="program.project", string="Project program", readonly=True,
                                          required=False, )
     program_outcome_indicator_line_ids = fields.One2many(comodel_name="program.project.outcome.indicators",

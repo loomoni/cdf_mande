@@ -18,11 +18,11 @@
 
     # always loaded
     'data': [
-        # 'security/security.xml',
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/project.xml',
         'views/configurations.xml',
-        # 'views/outcomes.xml',
+        'views/case_study.xml',
         # 'views/output.xml',
         # 'views/event_reporting.xml',
         'views/dashboard.xml',

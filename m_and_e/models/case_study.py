@@ -3,8 +3,9 @@ from odoo import models, fields, api, _
 date_format = "%Y-%m-%d"
 
 
-class SuccessStory(models.Model):
-    _name = 'success.story'
+class CaseStudy(models.Model):
+    _name = 'case.study'
+    _description = 'This table handle all the case study'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
@@ -49,7 +50,19 @@ class SuccessStory(models.Model):
         self.write({'state': 'approve'})
         return True
 
-    name = fields.Char(string="Story Title", required=True)
-    site = fields.Char(string="Site", required=False)
+
+    name = fields.Char(string="Title", required=True)
+    situation = fields.Char(string="Situation", required=False)
+    changes = fields.Char(string="changes ", required=False)
+    focus = fields.Selection([
+        ('individual ', 'Individual '),
+        ('household', 'Household'),
+        ('community ', 'Community '),
+    ], string="Focus ", default='individual', required=False)
+    analysis = fields.Text(string="Analysis  ", required=False)
+    lesson = fields.Text(string="Lesson learnt and recommendations  ", required=False)
     prepared_by = fields.Many2one(comodel_name='res.users', string="Prepared by", required=True)
-    description = fields.Html(string="Story Description",)
+    related_KRA = fields.Many2many(comodel_name='key.result.area', string="related KRA", )
+    sp_outcome = fields.Many2many(comodel_name='key.result.area.outcomes.lines', string="SP Outcome", )
+    project_outcome = fields.Many2many(comodel_name='program.project.outcomes.lines', string="Project Outcome", )
+    description = fields.Html(string="Case Study Description", )

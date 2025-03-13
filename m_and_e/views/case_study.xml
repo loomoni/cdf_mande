@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <!-- Tree success story view -->
-    <record id="success_story_tree_view" model="ir.ui.view">
-        <field name="name">success.story.tree.view</field>
-        <field name="model">success.story</field>
+    <!-- Tree Case study view -->
+    <record id="case_study_tree_view" model="ir.ui.view">
+        <field name="name">case.study.tree.view</field>
+        <field name="model">case.study</field>
         <field name="arch" type="xml">
-            <tree string="Success Story">
+            <tree string="Case Study">
                 <field name="name"/>
-                <field name="site"/>
+                <field name="situation"/>
                 <field name="prepared_by"/>
             </tree>
         </field>
     </record>
 
-    <!--  Form view success story-->
-    <record id="success_story_form_view_id" model="ir.ui.view">
-        <field name="name">success.story.form.view</field>
-        <field name="model">success.story</field>
+    <!--  Form view case study-->
+    <record id="case_study_form_view_id" model="ir.ui.view">
+        <field name="name">case.study.form.view</field>
+        <field name="model">case.study</field>
         <field name="arch" type="xml">
-            <form string="Success Story">
-                 <header>
+            <form string="Case Study">
+                  <header>
                     <button name="button_reported" string="Send Report" class="oe_highlight" states="draft"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.program_officers_access_group_id"/>
@@ -53,10 +53,33 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="site"/>
+                            <field name="situation"/>
                         </group>
                         <group>
                             <field name="prepared_by"/>
+                            <field name="changes"/>
+                        </group>
+
+                        <group>
+                            <field name="focus"/>
+                            <field name="analysis"/>
+                        </group>
+
+                        <group>
+                            <field name="lesson"/>
+                            <field name="sp_outcome" widget="many2many_tags"/>
+                        </group>
+
+
+                        <group>
+                            <field name="project_outcome" widget="many2many_tags"/>
+                            <field name="analysis"/>
+                        </group>
+
+
+                        <group>
+                            <field name="project_outcome" widget="many2many_tags"/>
+
                         </group>
 
                     </group>
@@ -75,15 +98,15 @@
         </field>
     </record>
 
-    <!-- success story action part -->
-    <record id="success_story_action_view" model="ir.actions.act_window">
-        <field name="name">Success Story</field>
-        <field name="res_model">success.story</field>
+    <!-- case study action part -->
+    <record id="case_study_action_view" model="ir.actions.act_window">
+        <field name="name">Case Study</field>
+        <field name="res_model">case.study</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                No Success Story added yet !!
+                No Case study added yet !!
             </p>
         </field>
     </record>

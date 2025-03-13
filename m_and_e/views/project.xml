@@ -72,6 +72,9 @@
                             <field name="total_budget_remain" readonly="1"/>
                         </group>
                     </group>
+                      <group>
+                        <field name="sp_id"/>
+                    </group>
                     <group>
                         <field name="description"/>
                     </group>

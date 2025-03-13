@@ -49,7 +49,7 @@
               sequence="3"/>
 
 
-    <menuitem action="success_story_action_view"
+    <menuitem action="case_study_action_view"
               id="case_study_id"
               name="Case Study"
               parent="learning_id"
@@ -68,6 +68,7 @@
     <menuitem id="program_main_menu"
               sequence="51"
               name="Program"
+              groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id,m_and_e.head_of_operations_manager_access_group_id,m_and_e.executive_director_access_group_id"
 
     />
 

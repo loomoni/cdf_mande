@@ -42,14 +42,14 @@
 <!--                    <button name="button_program_manager_back_to_supervisor" string="Back to Supervisor" states="review"-->
 <!--                            type="object"-->
 <!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
-                    <button name="button_approve" string="Approve" class="oe_highlight" states="head_of_operation_review"
+                    <button name="button_approve" string="Approve" class="oe_highlight" states="review"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
                     <button name="button_back_to_program_manager" string="Back to Program Manager"
-                            states="head_of_operation_review"
+                            states="review"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <button name="button_reject" string="Reject" class="oe_highlight" states="head_of_operation_review"
+                    <button name="button_reject" string="Reject" class="oe_highlight" states="review"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
                     <field name="state" widget="statusbar"
