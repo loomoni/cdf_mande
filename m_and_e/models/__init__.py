@@ -5,3 +5,4 @@ from . import sp
 from . import models
 from . import project
 from . import case_study
+from . import  monitoring_visit

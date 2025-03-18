@@ -5,7 +5,7 @@
         <field name="name">event.reporting.tree.view</field>
         <field name="model">event.reporting</field>
         <field name="arch" type="xml">
-            <tree string="Event Reporting">
+            <tree string="Project Reporting">
                  <field name="event_type"/>
                 <field name="venue"/>
                 <field name="partner"/>
@@ -24,7 +24,7 @@
         <field name="name">event.reporting.form.view</field>
         <field name="model">event.reporting</field>
         <field name="arch" type="xml">
-            <form string="Event Reporting">
+            <form string="Project Reporting">
 
                 <header>
                     <button name="button_reported" string="Send Report" class="oe_highlight" states="draft"
@@ -223,13 +223,13 @@
 
     <!-- outcomes action part -->
     <record id="event_reporting_action_view" model="ir.actions.act_window">
-        <field name="name">Event Reporting</field>
+        <field name="name">Project Reporting</field>
         <field name="res_model">event.reporting</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                No Event Reporting yet!!
+                No Project Reporting yet!!
             </p>
         </field>
     </record>

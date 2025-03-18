@@ -8,7 +8,6 @@ class CaseStudy(models.Model):
     _description = 'This table handle all the case study'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-
     state = fields.Selection([
         ('draft', 'Draft'),
         ('reported', 'Reported'),
@@ -50,17 +49,16 @@ class CaseStudy(models.Model):
         self.write({'state': 'approve'})
         return True
 
-
     name = fields.Char(string="Title", required=True)
-    situation = fields.Char(string="Situation", required=False)
-    changes = fields.Char(string="changes ", required=False)
+    situation = fields.Html(string="Situation", required=False)
+    changes = fields.Html(string="changes ", required=False)
     focus = fields.Selection([
         ('individual ', 'Individual '),
         ('household', 'Household'),
         ('community ', 'Community '),
     ], string="Focus ", default='individual', required=False)
-    analysis = fields.Text(string="Analysis  ", required=False)
-    lesson = fields.Text(string="Lesson learnt and recommendations  ", required=False)
+    analysis = fields.Html(string="Analysis  ", required=False)
+    lesson = fields.Html(string="Lesson learnt and recommendations  ", required=False)
     prepared_by = fields.Many2one(comodel_name='res.users', string="Prepared by", required=True)
     related_KRA = fields.Many2many(comodel_name='key.result.area', string="related KRA", )
     sp_outcome = fields.Many2many(comodel_name='key.result.area.outcomes.lines', string="SP Outcome", )

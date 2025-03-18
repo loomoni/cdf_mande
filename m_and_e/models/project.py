@@ -8,7 +8,7 @@ class ProgramProject(models.Model):
     name = fields.Char(string="Project Name", required=True)
     description = fields.Html(string="Description Project")
     funder = fields.Char(string="Funder")
-    sp_id = fields.Many2one(comodel_name="key.result.area", string="SP", required=True)
+    sp_id = fields.Many2one(comodel_name="key.result.area", string="SP", required=False)
     currency_id = fields.Many2one('res.currency', string="Currency")
     budget = fields.Monetary(string="Budget", currency_field='currency_id')
     start_date = fields.Date(string="Start Date")
@@ -358,6 +358,26 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
 
 class ProjectActivity(models.Model):
     _name = 'project.activity'
+
+    state = fields.Selection([
+        ('not_started', 'Not started'),
+        ('in_progress', 'In Progress'),
+        ('completed', 'Completed'),
+        ('cancel', 'Cancel'),
+
+    ],
+        string="Status", default='not_started',
+        track_visibility='onchange', )
+
+    @api.multi
+    def button_started(self):
+        self.write({'state': 'in_progress'})
+        return True
+
+    @api.multi
+    def button_completed(self):
+        self.write({'state': 'completed'})
+        return True
 
     name = fields.Char(string="Activity", required=True)
     deadline = fields.Date(string="Deadline", required=True)

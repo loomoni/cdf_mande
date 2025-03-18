@@ -16,11 +16,13 @@
 
 
 
-    <menuitem action="action_program_project_dashboard"
+    <menuitem action="action_program_project"
               id="dashboard_menu_mande_id2"
               name="Projects"
               parent="dashboard_menu_mande_id"
               sequence="1"/>
+
+
 
     <menuitem action="action_program_project_outcome_dashboard"
               id="dashboard_menu_mande_id3"
@@ -35,18 +37,25 @@
               sequence="2"/>
 
 
-
-    <menuitem action="event_reporting_action_view"
-              id="event_reporting_id"
-              name="Event Reporting"
+    <menuitem action="project_activity_action_view"
+              id="activity_menu_mande_id2"
+              name="Project Activities"
               parent="m_and_e_main_menu"
               sequence="2"/>
 
 
-    <menuitem id="learning_id"
-              name="Learnings"
+
+    <menuitem action="event_reporting_action_view"
+              id="event_reporting_id"
+              name="Activity Reporting"
               parent="m_and_e_main_menu"
               sequence="3"/>
+
+
+    <menuitem id="learning_id"
+              name="Project Learnings"
+              parent="m_and_e_main_menu"
+              sequence="4"/>
 
 
     <menuitem action="case_study_action_view"
@@ -58,6 +67,12 @@
     <menuitem action="success_story_action_view"
               id="success_story_id"
               name="Success Story"
+              parent="learning_id"
+              sequence="2"/>
+
+    <menuitem action="monitoring_visit_report_action_view"
+              id="monitoring_visit_report_id"
+              name="Monitoring visits reports"
               parent="learning_id"
               sequence="2"/>
 
@@ -76,7 +91,7 @@
 
     <menuitem
             id="strategic_plan_id"
-            name="SP"
+            name="Strategic Plan"
             parent="program_main_menu"
             sequence="1"/>
 

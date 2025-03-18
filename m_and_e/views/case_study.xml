@@ -19,7 +19,7 @@
         <field name="model">case.study</field>
         <field name="arch" type="xml">
             <form string="Case Study">
-                  <header>
+                <header>
                     <button name="button_reported" string="Send Report" class="oe_highlight" states="draft"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.program_officers_access_group_id"/>
@@ -29,12 +29,12 @@
                     <button name="back_to_draft" string="Back to draft" states="reported"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>
-<!--                    <button name="button_program_review" string="Review" class="oe_highlight" states="review"-->
-<!--                            type="object"-->
-<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
-<!--                    <button name="button_program_manager_back_to_supervisor" string="Back to Supervisor" states="review"-->
-<!--                            type="object"-->
-<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
+                    <!--                    <button name="button_program_review" string="Review" class="oe_highlight" states="review"-->
+                    <!--                            type="object"-->
+                    <!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
+                    <!--                    <button name="button_program_manager_back_to_supervisor" string="Back to Supervisor" states="review"-->
+                    <!--                            type="object"-->
+                    <!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
                     <button name="button_approve" string="Approve" class="oe_highlight" states="review"
                             type="object"
                             groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
@@ -53,40 +53,36 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="situation"/>
+
                         </group>
                         <group>
                             <field name="prepared_by"/>
-                            <field name="changes"/>
                         </group>
-
                         <group>
                             <field name="focus"/>
-                            <field name="analysis"/>
                         </group>
-
                         <group>
-                            <field name="lesson"/>
                             <field name="sp_outcome" widget="many2many_tags"/>
                         </group>
-
-
                         <group>
                             <field name="project_outcome" widget="many2many_tags"/>
-                            <field name="analysis"/>
-                        </group>
-
-
-                        <group>
-                            <field name="project_outcome" widget="many2many_tags"/>
-
                         </group>
 
                     </group>
                     <notebook>
-                        <page string="Story Description">
-                            <field name="description"/>
+                        <page string="situation / context">
+                            <field name="situation"/>
                         </page>
+                        <page string="The changes">
+                            <field name="changes"/>
+                        </page>
+                        <page string="Analysis">
+                            <field name="analysis"/>
+                        </page>
+                        <page string="Lesson learnt and recommendations">
+                            <field name="lesson"/>
+                        </page>
+
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
