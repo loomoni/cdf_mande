@@ -24,6 +24,7 @@
         'views/brand_remove.xml',
         'views/sp.xml',
         'views/activities.xml',
+        'views/remove_login_brand.xml',
         'views/project_beneficiary_views.xml',
         'views/menu.xml',
 
