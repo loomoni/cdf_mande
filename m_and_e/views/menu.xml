@@ -15,13 +15,11 @@
               sequence="1"/>
 
 
-
     <menuitem action="action_program_project"
               id="dashboard_menu_mande_id2"
               name="Projects"
               parent="dashboard_menu_mande_id"
               sequence="1"/>
-
 
 
     <menuitem action="action_program_project_outcome_dashboard"
@@ -44,18 +42,35 @@
               sequence="2"/>
 
 
+    <menuitem id="data_collection_form_menu"
+              name="Data Collection"
+              parent="m_and_e_main_menu"
+              sequence="3"/>
+
+    <menuitem action="action_project_beneficiary"
+              id="project_beneficiary_id"
+              name="Beneficiary"
+              parent="data_collection_form_menu"
+              sequence="1"/>
+
+        <menuitem action="action_project_beneficiary"
+              id="indicator_monitoring_id"
+              name="Indicator Monitoring"
+              parent="data_collection_form_menu"
+              sequence="2"/>
+
 
     <menuitem action="event_reporting_action_view"
               id="event_reporting_id"
               name="Activity Reporting"
               parent="m_and_e_main_menu"
-              sequence="3"/>
+              sequence="4"/>
 
 
     <menuitem id="learning_id"
               name="Project Learnings"
               parent="m_and_e_main_menu"
-              sequence="4"/>
+              sequence="5"/>
 
 
     <menuitem action="case_study_action_view"

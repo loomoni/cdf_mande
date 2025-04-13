@@ -54,7 +54,7 @@ class ProgramProject(models.Model):
     #
     #         rec.target_outcome_result = total_target_value
 
-    @api.multi
+
     @api.depends('program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
                  '.actual_period_line_ids.target_value',
                  'program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
@@ -149,7 +149,7 @@ class ProgramProjectActualPeriodLines(models.Model):
                                                      inverse_name="actual_period_section_line",
                                                      string="Section Period", required=False, )
 
-    @api.multi
+
     def _compute_total_actual_value(self):
         # self : model shift
         achievement = self.env['event.result.achievement']
@@ -206,7 +206,7 @@ class ProgramProjectActualPeriodSectionLines(models.Model):
             else:
                 rec.success_percentage = 0.0
 
-    @api.multi
+
     def _compute_outcome_total_actual_value(self):
         # self : model shift
         achievement = self.env['event.result.achievement']
@@ -293,7 +293,7 @@ class ProgramProjectOutputActualPeriodLines(models.Model):
             else:
                 record.percentage_result = 0
 
-    @api.multi
+
     def compute_total_actual_value(self):
         # self : model shift
         achievement = self.env['event.result.output.achievement']
@@ -341,7 +341,7 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
             else:
                 rec.percentage_result = 0
 
-    @api.multi
+
     def compute_output_total_actual_value(self):
         # self : model shift
         achievement = self.env['event.result.output.achievement']
@@ -369,12 +369,12 @@ class ProjectActivity(models.Model):
         string="Status", default='not_started',
         track_visibility='onchange', )
 
-    @api.multi
+
     def button_started(self):
         self.write({'state': 'in_progress'})
         return True
 
-    @api.multi
+
     def button_completed(self):
         self.write({'state': 'completed'})
         return True
@@ -387,3 +387,5 @@ class ProjectActivity(models.Model):
     description = fields.Html(string="Description", required=False)
     program_project_activity_id = fields.Many2one(comodel_name="program.project", string="Activity", readonly=True,
                                                   required=False, )
+    project_name = fields.Char(string="Project Name", related="program_project_activity_id.name", store=True)
+

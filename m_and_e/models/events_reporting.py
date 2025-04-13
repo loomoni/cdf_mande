@@ -20,42 +20,34 @@ class EventReporting(models.Model):
         string="Status", default='draft',
         track_visibility='onchange', )
 
-    @api.multi
     def button_reported(self):
         self.write({'state': 'reported'})
         return True
 
-    @api.multi
     def button_supervisor_review(self):
         self.write({'state': 'review'})
         return True
 
-    @api.multi
     def back_to_draft(self):
         self.write({'state': 'draft'})
         return True
 
-    @api.multi
     def button_program_review(self):
         self.write({'state': 'head_of_operation_review'})
         return True
 
-    @api.multi
     def button_program_manager_back_to_supervisor(self):
         self.write({'state': 'reported'})
         return True
 
-    @api.multi
     def button_approve(self):
         self.write({'state': 'approve'})
         return True
 
-    @api.multi
     def button_back_to_program_manager(self):
         self.write({'state': 'review'})
         return True
 
-    @api.multi
     def button_reject(self):
         self.write({'state': 'reject'})
         return True
@@ -66,7 +58,6 @@ class EventReporting(models.Model):
         for section in self.region:
             sections.append(section.id)
         return {'domain': {'district': [('district_id', 'in', sections)]}}
-
 
     # General Information
     event_type = fields.Char(string="Event type", required=True)

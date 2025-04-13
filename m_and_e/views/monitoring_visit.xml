@@ -45,7 +45,7 @@
     <record id="monitoring_visit_report_action_view" model="ir.actions.act_window">
         <field name="name">Monitoring Visit Report</field>
         <field name="res_model">monitoring.visit.report</field>
-        <field name="view_type">form</field>
+<!--        <field name="view_type">form</field>-->
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

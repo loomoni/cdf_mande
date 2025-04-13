@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree string="Key Result Area">
                 <field name="name"/>
+                <field name="project_name"/>
                 <field name="user_id"/>
                 <field name="deadline"/>
                 <field name="budget"/>
@@ -57,7 +58,7 @@
     <record id="project_activity_action_view" model="ir.actions.act_window">
         <field name="name">Activities</field>
         <field name="res_model">project.activity</field>
-        <field name="view_type">form</field>
+<!--        <field name="view_type">form</field>-->
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

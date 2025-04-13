@@ -72,7 +72,7 @@
                             <field name="total_budget_remain" readonly="1"/>
                         </group>
                     </group>
-                      <group>
+                    <group>
                         <field name="sp_id"/>
                     </group>
                     <group>
@@ -342,7 +342,7 @@
                                                             <field name="user_id"/>
                                                         </li>
                                                     </ul>
-                                                      <ul>
+                                                    <ul>
                                                         <li>Deadline:
                                                             <field name="deadline"/>
                                                         </li>
@@ -389,5 +389,6 @@
         <field name="res_model">program.project</field>
         <field name="view_mode">tree,form</field>
     </record>
+
 
 </odoo>

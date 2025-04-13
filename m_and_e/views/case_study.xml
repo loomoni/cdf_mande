@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Tree Case study view -->
+    <!-- Tree Case Study View -->
     <record id="case_study_tree_view" model="ir.ui.view">
         <field name="name">case.study.tree.view</field>
         <field name="model">case.study</field>
@@ -13,47 +13,16 @@
         </field>
     </record>
 
-    <!--  Form view case study-->
+    <!-- Form View Case Study -->
     <record id="case_study_form_view_id" model="ir.ui.view">
         <field name="name">case.study.form.view</field>
         <field name="model">case.study</field>
         <field name="arch" type="xml">
             <form string="Case Study">
-                <header>
-                    <button name="button_reported" string="Send Report" class="oe_highlight" states="draft"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.program_officers_access_group_id"/>
-                    <button name="button_supervisor_review" string="Review" class="oe_highlight" states="reported"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>
-                    <button name="back_to_draft" string="Back to draft" states="reported"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>
-                    <!--                    <button name="button_program_review" string="Review" class="oe_highlight" states="review"-->
-                    <!--                            type="object"-->
-                    <!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
-                    <!--                    <button name="button_program_manager_back_to_supervisor" string="Back to Supervisor" states="review"-->
-                    <!--                            type="object"-->
-                    <!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
-                    <button name="button_approve" string="Approve" class="oe_highlight" states="review"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <button name="button_back_to_program_manager" string="Back to Program Manager"
-                            states="review"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <button name="button_reject" string="Reject" class="oe_highlight" states="review"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <field name="state" widget="statusbar"
-                           statusbar_visible="draft,reported,review,program_review,approve"
-                           statusbar_colors="{'KEY_IS_STATE':'VALUE_IS_COLOR'}"/>
-                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="name"/>
-
                         </group>
                         <group>
                             <field name="prepared_by"/>
@@ -67,22 +36,20 @@
                         <group>
                             <field name="project_outcome" widget="many2many_tags"/>
                         </group>
-
                     </group>
                     <notebook>
-                        <page string="situation / context">
+                        <page string="Situation / Context">
                             <field name="situation"/>
                         </page>
-                        <page string="The changes">
+                        <page string="The Changes">
                             <field name="changes"/>
                         </page>
                         <page string="Analysis">
                             <field name="analysis"/>
                         </page>
-                        <page string="Lesson learnt and recommendations">
+                        <page string="Lesson Learnt and Recommendations">
                             <field name="lesson"/>
                         </page>
-
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
@@ -94,17 +61,15 @@
         </field>
     </record>
 
-    <!-- case study action part -->
+    <!-- Case Study Action -->
     <record id="case_study_action_view" model="ir.actions.act_window">
         <field name="name">Case Study</field>
         <field name="res_model">case.study</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                No Case study added yet !!
+                No Case Study added yet!
             </p>
         </field>
     </record>
-
 </odoo>

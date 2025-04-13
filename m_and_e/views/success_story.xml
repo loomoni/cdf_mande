@@ -19,36 +19,36 @@
         <field name="model">success.story</field>
         <field name="arch" type="xml">
             <form string="Success Story">
-                 <header>
-                    <button name="button_reported" string="Send Report" class="oe_highlight" states="draft"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.program_officers_access_group_id"/>
-                    <button name="button_supervisor_review" string="Review" class="oe_highlight" states="reported"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>
-                    <button name="back_to_draft" string="Back to draft" states="reported"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>
-<!--                    <button name="button_program_review" string="Review" class="oe_highlight" states="review"-->
+<!--                 <header>-->
+<!--                    <button name="button_reported" string="Send Report" class="oe_highlight" states="draft"-->
 <!--                            type="object"-->
-<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
-<!--                    <button name="button_program_manager_back_to_supervisor" string="Back to Supervisor" states="review"-->
+<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.program_officers_access_group_id"/>-->
+<!--                    <button name="button_supervisor_review" string="Review" class="oe_highlight" states="reported"-->
 <!--                            type="object"-->
-<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>-->
-                    <button name="button_approve" string="Approve" class="oe_highlight" states="review"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <button name="button_back_to_program_manager" string="Back to Program Manager"
-                            states="review"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <button name="button_reject" string="Reject" class="oe_highlight" states="review"
-                            type="object"
-                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>
-                    <field name="state" widget="statusbar"
-                           statusbar_visible="draft,reported,review,program_review,approve"
-                           statusbar_colors="{'KEY_IS_STATE':'VALUE_IS_COLOR'}"/>
-                </header>
+<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>-->
+<!--                    <button name="back_to_draft" string="Back to draft" states="reported"-->
+<!--                            type="object"-->
+<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.program_manager_access_group_id"/>-->
+<!--&lt;!&ndash;                    <button name="button_program_review" string="Review" class="oe_highlight" states="review"&ndash;&gt;-->
+<!--&lt;!&ndash;                            type="object"&ndash;&gt;-->
+<!--&lt;!&ndash;                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button name="button_program_manager_back_to_supervisor" string="Back to Supervisor" states="review"&ndash;&gt;-->
+<!--&lt;!&ndash;                            type="object"&ndash;&gt;-->
+<!--&lt;!&ndash;                            groups="m_and_e.administrator_access_group_id,m_and_e.head_of_operations_manager_access_group_id"/>&ndash;&gt;-->
+<!--                    <button name="button_approve" string="Approve" class="oe_highlight" states="review"-->
+<!--                            type="object"-->
+<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>-->
+<!--                    <button name="button_back_to_program_manager" string="Back to Program Manager"-->
+<!--                            states="review"-->
+<!--                            type="object"-->
+<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>-->
+<!--                    <button name="button_reject" string="Reject" class="oe_highlight" states="review"-->
+<!--                            type="object"-->
+<!--                            groups="m_and_e.administrator_access_group_id,m_and_e.executive_director_access_group_id"/>-->
+<!--                    <field name="state" widget="statusbar"-->
+<!--                           statusbar_visible="draft,reported,review,program_review,approve"-->
+<!--                           statusbar_colors="{'KEY_IS_STATE':'VALUE_IS_COLOR'}"/>-->
+<!--                </header>-->
                 <sheet>
                     <group>
                         <group>
@@ -79,7 +79,7 @@
     <record id="success_story_action_view" model="ir.actions.act_window">
         <field name="name">Success Story</field>
         <field name="res_model">success.story</field>
-        <field name="view_type">form</field>
+<!--        <field name="view_type">form</field>-->
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

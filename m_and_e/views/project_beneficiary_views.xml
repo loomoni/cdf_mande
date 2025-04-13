@@ -1,0 +1,139 @@
+<odoo>
+
+
+    <record id="view_project_beneficiary_tree" model="ir.ui.view">
+        <field name="name">project.beneficiary.tree</field>
+        <field name="model">project.beneficiary</field>
+        <field name="arch" type="xml">
+            <tree string="Project Beneficiaries">
+                <field name="project_name"/>
+                <field name="region"/>
+                <field name="district"/>
+                <field name="ward"/>
+                <field name="village"/>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_beneficiary_form" model="ir.ui.view">
+        <field name="name">project.beneficiary.form</field>
+        <field name="model">project.beneficiary</field>
+        <field name="arch" type="xml">
+            <form string="Project Beneficiary">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_name"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="goal"/>
+                        </group>
+                    </group>
+                    <group>
+
+                        <group>
+
+                            <field name="name"/>
+                            <field name="contact"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="education_level"/>
+                            <field name="disability"/>
+                        </group>
+
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="region"/>
+                            <field name="district"/>
+                        </group>
+                        <group>
+                            <field name="ward"/>
+                            <field name="village"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="vulnerability_status"/>
+                    </group>
+
+                    <group attrs="{'invisible':[('vulnerability_status','!=','Health')]}" string="Health Vulnerability">
+                        <group>
+                            <field name="tested_hiv_positive"/>
+                            <field name="new_hiv_tested_cases"/>
+                            <field name="prevention_methods"/>
+                        </group>
+                        <group>
+                            <field name="started_arv" attrs="{'invisible':[('tested_hiv_positive','=','no')]}"/>
+                            <field name="adherence_level"/>
+                        </group>
+
+                    </group>
+                    <group attrs="{'invisible':[('vulnerability_status','!=','Health')]}">
+                        <field name="reasons_not_taking_arv" attrs="{'invisible':[('started_arv','=','no')]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('vulnerability_status','!=','Protection')]}"
+                           string="Protection Vulnerability">
+                        <group>
+                            <field name="type_of_violence"/>
+                            <field name="violence_reported_by"/>
+                        </group>
+                        <group>
+                            <field name="support_services_accessed"/>
+                            <field name="psychotherapy_received"/>
+                        </group>
+                        <group>
+                            <field name="perception_of_safety"/>
+                            <field name="case_status"/>
+                        </group>
+                        <group>
+                            <field name="barriers_to_recovery"/>
+                        </group>
+                    </group>
+
+                    <group attrs="{'invisible':[('vulnerability_status','!=','Economic')]}"
+                           string="Economic Vulnerability">
+                        <group>
+                            <field name="type_of_iga"/>
+                            <field name="start_date"/>
+                        </group>
+                        <group>
+                            <field name="member_vsla"/>
+                            <field name="vsla_functional"/>
+                        </group>
+                        <group>
+                            <field name="monthly_revenue"/>
+                            <field name="amount_saved_per_month"/>
+                              <field name="training_attended"/>
+                        </group>
+                        <group>
+                            <field name="monthly_income_category"/>
+                            <field name="saving_scheme"/>
+                            <field name="training_facilitated_by"/>
+                        </group>
+                     
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_project_beneficiary" model="ir.actions.act_window">
+        <field name="name">Project Beneficiaries</field>
+        <field name="res_model">project.beneficiary</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
