@@ -58,7 +58,7 @@ class ProgramProject(models.Model):
     @api.depends('program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
                  '.actual_period_line_ids.target_value',
                  'program_project_outcome_line_ids.program_outcome_indicator_line_ids.unit_definition_line_ids'
-                 '.actual_period_line_ids.real_actual_value')
+                 '.actual_period_line_ids.real_actual_value_year')
     def _compute_outcome_results(self):
         for project in self:
             target_total = 0
@@ -69,7 +69,7 @@ class ProgramProject(models.Model):
                     for unit in indicator.unit_definition_line_ids:
                         for period in unit.actual_period_line_ids:
                             target_total += period.target_value
-                            actual_total += period.real_actual_value
+                            actual_total += period.real_actual_value_year
 
             project.target_outcome_result = target_total
             project.actual_outcome_result = actual_total
@@ -134,20 +134,79 @@ class ProgramProjectUnitDefinition(models.Model):
                                              string="Unit Section", required=False, )
 
 
+# class ProgramProjectActualPeriodLines(models.Model):
+#     _name = 'program.project.actual.period.lines'
+#     _rec_name = 'actual_period'
+#
+#     actual_period = fields.Many2one(comodel_name="target.period", string="Actual Period", required=True)
+#     target_value = fields.Integer(string="Target Value", required=True, store=True)
+#     real_actual_value = fields.Integer(string="Actual value", required=False, default=0, readonly=True,
+#                                        compute="_compute_total_actual_value", store=True)
+#     target_description = fields.Char(string="Target description", required=False)
+#     unit_line_id = fields.Many2one(comodel_name="program.project.unit.definition", string="Unit/Definition",
+#                                    required=False, readonly=True)
+#     actual_period_section_line_ids = fields.One2many(comodel_name="program.project.actual.period.section.lines",
+#                                                      inverse_name="actual_period_section_line",
+#                                                      string="Section Period", required=False, )
+#
+#
+#     # def _compute_total_actual_value(self):
+#     #     # self : model shift
+#     #     achievement = self.env['event.result.achievement']
+#     #     for rec in self:
+#     #         current_value = 0
+#     #         achievement_ids = achievement.search([('outcome_year', '=', rec.actual_period.id)])
+#     #         if achievement_ids:
+#     #             for achievement in achievement_ids:
+#     #                 # amount = achievement amount
+#     #                 current_value += achievement.actual_value
+#     #
+#     #         rec.real_actual_value = 0 + current_value
+#
+#     # @api.depends('actual_period_section_line_ids.real_actual_value')
+#     # def _compute_total_actual_value(self):
+#     #     # for value in self:
+#     #     total = 0.0
+#     #     for actual_value in self:
+#     #         total += sum(line.real_actual_value for line in actual_value.actual_period_section_line_ids)
+#     #
+#     #         actual_value.real_actual_value = total
+#
+#     @api.depends('actual_period_section_line_ids.real_actual_value')
+#     def _compute_total_actual_value(self):
+#         for record in self:
+#             record.real_actual_value = sum(
+#                 line.real_actual_value for line in record.actual_period_section_line_ids
+#             )
+
+
+
 class ProgramProjectActualPeriodLines(models.Model):
     _name = 'program.project.actual.period.lines'
     _rec_name = 'actual_period'
 
     actual_period = fields.Many2one(comodel_name="target.period", string="Actual Period", required=True)
     target_value = fields.Integer(string="Target Value", required=True, store=True)
-    real_actual_value = fields.Integer(string="Actual value", required=False, default=0, readonly=True,
-                                       compute="_compute_total_actual_value", store=True)
+    real_actual_value_year = fields.Integer(
+        string="Actual value",
+        compute="_compute_total_actual_value",
+        readonly=True,
+        default=0
+    )
     target_description = fields.Char(string="Target description", required=False)
-    unit_line_id = fields.Many2one(comodel_name="program.project.unit.definition", string="Unit/Definition",
-                                   required=False, readonly=True)
-    actual_period_section_line_ids = fields.One2many(comodel_name="program.project.actual.period.section.lines",
-                                                     inverse_name="actual_period_section_line",
-                                                     string="Section Period", required=False, )
+    unit_line_id = fields.Many2one(comodel_name="program.project.unit.definition", string="Unit/Definition")
+    actual_period_section_line_ids = fields.One2many(
+        comodel_name="program.project.actual.period.section.lines",
+        inverse_name="actual_period_section_line",
+        string="Section Period"
+    )
+
+    # @api.depends('actual_period_section_line_ids.real_actual_value')
+    # def _compute_total_actual_value(self):
+    #     for record in self:
+    #         record.real_actual_value_year = sum(
+    #             line.real_actual_value for line in record.actual_period_section_line_ids
+    #         )
 
 
     def _compute_total_actual_value(self):
@@ -155,13 +214,40 @@ class ProgramProjectActualPeriodLines(models.Model):
         achievement = self.env['event.result.achievement']
         for rec in self:
             current_value = 0
-            achievement_ids = achievement.search([('outcome_year', '=', rec.actual_period.id)])
+            achievement_ids = achievement.search([('outcome_year', '=', rec.id)])
             if achievement_ids:
                 for achievement in achievement_ids:
                     # amount = achievement amount
                     current_value += achievement.actual_value
 
-            rec.real_actual_value = 0 + current_value
+            rec.real_actual_value_year = 0 + current_value
+    #         # rec.real_actual_value = 90
+
+    #
+    # def _compute_outcome_total_actual_value(self):
+    #     # self : model shift
+    #     achievement = self.env['event.result.achievement']
+    #     for rec in self:
+    #         current_value = 0
+    #         achievement_ids = achievement.search([('outcome_actual_period', '=', rec.id)])
+    #         if achievement_ids:
+    #             for achievement in achievement_ids:
+    #                 # amount = achievement amount
+    #                 current_value += achievement.actual_value
+    #
+    #         rec.real_actual_value = 0 + current_value
+
+
+
+
+
+    # @api.depends('actual_period_section_line_ids.real_actual_value')
+    # def _compute_total_actual_value(self):
+    #     for record in self:
+    #         record.real_actual_value = sum(
+    #             line.real_actual_value for line in record.actual_period_section_line_ids
+    #         )
+
 
 
 class ProgramProjectActualPeriodSectionLines(models.Model):
@@ -170,7 +256,7 @@ class ProgramProjectActualPeriodSectionLines(models.Model):
 
     actual_period_section = fields.Many2one(comodel_name="target.period.lines", string="Actual Section Period",
                                             required=False)
-    target_value = fields.Integer(string="Target value", required=False, )
+    target_value = fields.Integer(string="Target value", required=False, store=True)
     real_actual_value = fields.Integer(string="Actual value", required=False, readonly=True,
                                        compute="_compute_outcome_total_actual_value")
     actual_period_section_line = fields.Many2one(comodel_name="program.project.actual.period.lines",
@@ -195,7 +281,7 @@ class ProgramProjectActualPeriodSectionLines(models.Model):
     success_percentage = fields.Float(
         string="Success Percentage",
         compute="_compute_success_percentage",
-        store=True
+
     )
 
     @api.depends('real_actual_value', 'target_value')
@@ -219,6 +305,8 @@ class ProgramProjectActualPeriodSectionLines(models.Model):
                     current_value += achievement.actual_value
 
             rec.real_actual_value = 0 + current_value
+
+
 
 
 class ProgramProjectOutput(models.Model):
@@ -294,18 +382,29 @@ class ProgramProjectOutputActualPeriodLines(models.Model):
                 record.percentage_result = 0
 
 
-    def compute_total_actual_value(self):
-        # self : model shift
-        achievement = self.env['event.result.output.achievement']
-        for rec in self:
-            current_value = 0
-            achievement_ids = achievement.search([('outcome_year.id', '=', rec.actual_period.id)])
-            if achievement_ids:
-                for achievement in achievement_ids:
-                    # amount = achievement amount
-                    current_value += achievement.actual_value
+    # def compute_total_actual_value(self):
+    #     # self : model shift
+    #     achievement = self.env['event.result.output.achievement']
+    #     for rec in self:
+    #         current_value = 0
+    #         achievement_ids = achievement.search([('outcome_year.id', '=', rec.actual_period.id)])
+    #         if achievement_ids:
+    #             for achievement in achievement_ids:
+    #                 # amount = achievement amount
+    #                 current_value += achievement.actual_value
+    #
+    #         rec.real_actual_value = 0 + current_value
+    #
 
-            rec.real_actual_value = 0 + current_value
+    @api.depends('output_actual_period_section_line_ids.real_actual_value')
+    def compute_total_actual_value(self):
+        # for value in self:
+        total = 0.0
+        for actual_value in self:
+            total += sum(line.real_actual_value for line in actual_value.output_actual_period_section_line_ids)
+
+            actual_value.real_actual_value = total
+
 
 
 class ProgramProjectOutputActualPeriodSectionLines(models.Model):
@@ -321,7 +420,7 @@ class ProgramProjectOutputActualPeriodSectionLines(models.Model):
                                                         string="Actual Period",
                                                         required=False, readonly=True)
 
-    percentage_result = fields.Float(string="Success %", compute="_compute_success_percentage", store=True)
+    percentage_result = fields.Float(string="Success %", compute="_compute_success_percentage")
     output_indicator = fields.Many2one(
         related="output_actual_period_section_line.output_unit_line_id.output_unit_definition_line.output_indicator",
         string="Output Indicator", store=True, readonly=True

@@ -148,7 +148,7 @@
                                                                                             <field name="actual_period"/>
                                                                                             <field name="target_description"/>
                                                                                             <field name="target_value"/>
-                                                                                            <field name="real_actual_value"/>
+                                                                                            <field name="real_actual_value_year"/>
                                                                                         </tree>
                                                                                         <form>
                                                                                             <group>
@@ -158,7 +158,7 @@
                                                                                                 </group>
                                                                                                 <group>
                                                                                                     <field name="target_value"/>
-                                                                                                    <field name="real_actual_value"/>
+                                                                                                    <field name="real_actual_value_year"/>
                                                                                                 </group>
                                                                                             </group>
                                                                                             <notebook>
